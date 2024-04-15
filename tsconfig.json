@@ -3,5 +3,12 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "allowJs": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@styles/*": ["src/styles/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@consts": ["src/consts.ts"],
+    }
   }
 }
