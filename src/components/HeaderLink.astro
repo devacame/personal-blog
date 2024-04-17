@@ -1,23 +1,20 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from 'astro/types'
 
-type Props = HTMLAttributes<'a'>;
+type Props = HTMLAttributes<'a'>
 
-const { href, class: className, ...props } = Astro.props;
+const { href, class: className, ...props } = Astro.props
 
-const { pathname } = Astro.url;
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = href === pathname || href === '/' + subpath?.[0];
+const { pathname } = Astro.url
+const subpath = pathname.match(/[^\/]+/g)!
+/* The following check for isActive can be made into a function if there are more top-level pages */
+const isActive = !((href?.toString().includes('about') != (subpath[1]?.toLowerCase() == 'about')) || (href?.toString().includes('paper') != (subpath[1]?.toLowerCase() == 'paper')))
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a href={href} class:list={[className, { active: isActive }, " hover:text-gray-700 dark:hover:text-gray-200  text-black dark:text-white"]} {...props}>
 	<slot />
 </a>
 <style>
-	a {
-		display: inline-block;
-		text-decoration: none;
-	}
 	a.active {
 		font-weight: bolder;
 		text-decoration: underline;
