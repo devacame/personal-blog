@@ -2,22 +2,11 @@
 const { pathname } = Astro.url
 const subpath = pathname.match(/[^\/]+/g)!
 const nonLocalPath = subpath.slice(1).join('/')
+const { otherLang = '' } = Astro.props
 ---
-<div class="flex justify-center items-center">
-	<div class="text-gray-900 dark:text-gray-100">
-        <div class="relative w-full group">
-            <button class="py-2.5 px-3 w-full md:text-sm text-site bg-transparent border border-dimmed  focus:border-brand focus:outline-none focus:ring-0 peer flex items-center justify-between rounded font-semibold uppercase">{Astro.currentLocale}</button>
-            <div
-                class="absolute z-[99] top-[110%] left-[50%] translate-x-[-87.5%] rounded-md overflow-hidden shadow-lg min-w-[200px] w-max peer-focus:visible peer-focus:opacity-100 opacity-0 invisible duration-200 p-1 bg-gray-100 dark:bg-gray-800  border border-dimmed text-xs md:text-sm">
-                <a
-                    href=`/en/${nonLocalPath}`
-                    class=" w-full block cursor-pointer hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 hover:text-link px-3 py-2 rounded-md text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-200">
-                    EN</a>
-                <a
-                    href=`/ko/${nonLocalPath}`
-                    class=" w-full block cursor-pointer hover:bg-white dark:hover:bg-gray-900 dark:bg-gray-800 hover:text-link px-3 py-2 rounded-md text-black dark:text-white hover:text-gray-700 dark:hover:text-gray-200">
-                    KO
-                </a>
-        </div>
-    </div>
-</div>
+
+<a href=`/${otherLang}/${nonLocalPath}` class="w-11 h-11 rounded-full bg-slate-200 dark:bg-slate-800 flex justify-center align-center uppercase text-black dark:text-white p-0 m-0">
+    <p class="m-auto">
+        {otherLang}
+    </p>
+</a>
