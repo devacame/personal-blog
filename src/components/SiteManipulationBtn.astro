@@ -5,21 +5,23 @@ const { otherLang = '', ...rest } = Astro.props
 ---
 
 <div class="fixed bottom-2 right-2 flex flex-col-reverse items-center gap-y-1 text-black dark:text-white">
-    <button class="peer w-11 h-11 bg-slate-300 dark:bg-slate-700 rounded-full text-center shadow-2xl drop-shadow-2xl">O</button>
+    <button class="peer w-11 h-11 bg-slate-300 dark:bg-slate-700 rounded-full text-center shadow-2xl drop-shadow-2xl font-extrabold">
+        <svg fill="#000000" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M10.429 16a2.715 2.715 0 1 1-5.43 0 2.715 2.715 0 0 1 5.43 0zM16 13.286a2.715 2.715 0 1 0 .001 5.429A2.715 2.715 0 0 0 16 13.286zm8.285 0a2.714 2.714 0 1 0 0 5.428 2.714 2.714 0 0 0 0-5.428z"></path></g></svg>
+    </button>
     <div class="flex flex-col-reverse justify-center gap-y-1 opacity-0 invisible peer-focus:visible peer-focus:opacity-100 duration-200">
-        <button onclick="scrollToF('footer')" class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-700 text-bold">
-            <svg fill="#000000" width="256px" height="256px" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="1.984"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"></path></g></svg>
+        <button id="bottomBtn" class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-700 text-bold">
+            <svg fill="#000000" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="1.984"><g id="SVGRepo_bgCarrier1" stroke-width="0"></g><g id="SVGRepo_tracerCarrier1" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier1"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"></path></g></svg>
         </button>
-        <button onclick="scrollToF('#top')" class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-700 rotate-180">
-            <svg fill="#000000" width="256px" height="256px" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="1.984"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"></path></g></svg>
+        <button id="topBtn" class="flex items-center justify-center w-10 h-10 rounded-full bg-slate-300 dark:bg-slate-700 rotate-180">
+            <svg fill="#000000" viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="1.984"><g id="SVGRepo_bgCarrier2" stroke-width="0"></g><g id="SVGRepo_tracerCarrier2" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier2"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"></path></g></svg>
         </button>
+        <script>
+            document.getElementById('topBtn')!.addEventListener('click', (s) => {document.querySelector('#top')!.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});console.log('top', s)});
+        </script>
+        <script>
+            document.getElementById('bottomBtn')!.addEventListener('click', (s) => {document.querySelector('#bottom')!.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'nearest'});console.log('bottom', s)});
+        </script>
         <ThemeToggleBtn class="" />
         {otherLang && <LanguageBtn otherLang={otherLang} />}
     </div>
 </div>
-<script is:inline>
-    function scrollToF(target) {
-        document.querySelector(target)?.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'nearest'})
-        console.log(target)
-    }
-</script>
