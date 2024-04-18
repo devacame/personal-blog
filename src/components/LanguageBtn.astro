@@ -5,7 +5,7 @@ const nonLocalPath = subpath.slice(1).join('/')
 const { otherLang = '' } = Astro.props
 ---
 
-<a href=`/${otherLang}/${nonLocalPath}` class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex justify-center align-center uppercase text-black dark:text-white p-0 m-0">
+<a href=`/${otherLang}/${nonLocalPath}` class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex justify-center align-center uppercase text-black dark:text-white p-0 m-0 font-extrabold">
     <p class="m-auto">
         {otherLang}
     </p>
