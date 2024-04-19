@@ -22,7 +22,7 @@ export default defineConfig({
 		remarkPlugins: [remarkToc, remarkMath, [remarkCollapse, { test: 'Table of Contents', summary: (str) => str }], remarkNormalizeHeadings],
 		rehypePlugins: [rehypeKatex],
 		shikiConfig: {
-			theme: 'nord',
+			theme: 'tokyo-night',
 			wrap: true,
 		}
 	},
