@@ -1,0 +1,29 @@
+---
+import BaseHead from '@components/BaseHead.astro'
+import Header from '@components/Header.astro'
+import Footer from '@components/Footer.astro'
+import SiteManipulationBtn from '@components/SiteManipulationBtn.astro'
+
+interface Props {
+    title: string
+    description: string
+    otherLang?: string
+    image?: string
+}
+
+const { title, description, image = '', otherLang = '' } = Astro.props
+---
+
+<html>
+    <head>
+        <BaseHead title={title} description={description} image={image} />
+    </head>
+    <body class="bg-white dark:bg-black h-screen">
+        <div id="top"></div>
+        <Header />
+        <slot />
+        <Footer />
+        <SiteManipulationBtn otherLang={otherLang} />
+        <div id="bottom"></div>
+    </body>
+</html>
