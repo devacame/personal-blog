@@ -6,7 +6,7 @@ import SeriesTag from '@components/SeriesTag.astro'
 import Tag from '@components/Tag.astro'
 
 export async function getStaticPaths() {
-	const posts = (await getCollection('blog'))
+	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft)
 	return posts.map((post) => ({
 		params: { slug: post.slug },
 		props: post,

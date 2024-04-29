@@ -4,7 +4,7 @@ import GeneralLayout from '@layouts/GeneralLayout.astro';
 import { getCollection } from 'astro:content';
 import FormattedDate from '@components/FormattedDate.astro';
 
-const posts = (await getCollection('blog')).filter((post) => post.data.language == 'en').sort(
+const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en').sort(
 	(a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 )
 ---
