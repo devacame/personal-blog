@@ -19,11 +19,13 @@ const { title, description, image = '', otherLang = '' } = Astro.props
         <BaseHead title={title} description={description} image={image} />
     </head>
     <body class="bg-white dark:bg-black h-screen">
-        <div id="top"></div>
-        <Header />
-        <slot />
-        <Footer />
-        <SiteManipulationBtn otherLang={otherLang} />
-        <div id="bottom"></div>
-    </body>
+        <div class="relative min-h-screen">
+            <div id="top" class="invisible"></div>
+            <Header />
+            <slot />
+            <Footer />
+            <SiteManipulationBtn otherLang={otherLang} />
+            <div id="bottom" class="invisible"></div>
+        </div>
+   </body>
 </html>
