@@ -10,7 +10,6 @@ const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft 
 ---
 
 <GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} >
-	<!-- <main class="w-[960px]"> -->
 	<main>
 		<section>
 			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
