@@ -30,7 +30,7 @@ let colorVariant = [
             <div class=`flex-grow h-full -ml-px ${colorVariant[colorIndex].bg} rounded-md rounded-l-none`></div>
         </div>
         <span class=`relative uppercase pr-px`>
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href=`/tags/${name}` class=`font-semibold no-underline ${colorVariant[colorIndex].text}`>{name}</a><span>&nbsp;</span>
+          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href=`/${Astro.currentLocale}/tags/${name}` class=`font-semibold no-underline ${colorVariant[colorIndex].text}`>{name}</a><span>&nbsp;</span>
         </span>
     </div>
 </div>
