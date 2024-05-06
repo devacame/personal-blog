@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config'
 import tailwind from '@astrojs/tailwind'
+import pageFind from 'astro-pagefind'
 import remarkToc from 'remark-toc'
 import remarkMath from 'remark-math'
 import remarkNormalizeHeadings from 'remark-normalize-headings'
@@ -26,5 +27,5 @@ export default defineConfig({
 			wrap: true,
 		}
 	},
-	integrations: [mdx(), sitemap(), tailwind()],
+	integrations: [mdx(), sitemap(), tailwind(), pageFind()],
 })
