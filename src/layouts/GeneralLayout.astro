@@ -1,6 +1,6 @@
 ---
 import BaseHead from '@components/BaseHead.astro'
-import Header from '@components/Header.astro'
+import Navbar from '@components/Navbar.astro'
 import Footer from '@components/Footer.astro'
 import SiteManipulationBtn from '@components/SiteManipulationBtn.astro'
 
@@ -21,7 +21,7 @@ const { title, description, image = '', otherLang = '' } = Astro.props
     <body class="bg-white dark:bg-black h-screen">
         <div class="relative min-h-screen">
             <div id="top" class="invisible"></div>
-            <Header />
+            <Navbar />
             <slot />
             <Footer />
             <SiteManipulationBtn otherLang={otherLang} />

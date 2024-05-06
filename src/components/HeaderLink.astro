@@ -3,15 +3,15 @@ import type { HTMLAttributes } from 'astro/types'
 
 type Props = HTMLAttributes<'a'>
 
-const { href, class: className, ...props } = Astro.props
+const { href, class: className } = Astro.props
 
 const { pathname } = Astro.url
-const subpath = pathname.match(/[^\/]+/g)!
-/* The following check for isActive can be made into a function if there are more top-level pages */
-const isActive = !((href?.toString().includes('about') != (subpath[1]?.toLowerCase() == 'about')) || (href?.toString().includes('search') != (subpath[1]?.toLowerCase() == 'search')))
+const subpath = pathname.split('/').slice(1)
+const check = (chkStr: string) => href?.toString().includes(chkStr) != (subpath[1]?.toLowerCase() == chkStr)
+const isActive = !(check('about') || check('search') || check('series') || check('tags'))
 ---
 
-<a href={href} class:list={[className, { active: isActive }, " hover:text-gray-700 dark:hover:text-gray-200  text-black dark:text-white"]} {...props}>
+<a href={href} class:list={[className, { active: isActive }, " hover:text-gray-700 dark:hover:text-gray-200 text-black dark:text-white active:font-bold active:underline"]}>
 	<slot />
 </a>
 <style>
