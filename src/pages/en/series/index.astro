@@ -1,0 +1,33 @@
+---
+import { SITE_TITLE } from '@consts';
+import GeneralLayout from '@layouts/GeneralLayout.astro';
+import { getCollection } from 'astro:content';
+import urlencode from '@utils/urlencode';
+
+const posts = (await getCollection('blog'))
+                .filter((post) =>
+                    !post.data.isDraft &&
+                    post.data.language == 'en' &&
+                    post.data.series !== undefined &&
+                    post.data.seriesNum === 1)
+                .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+---
+
+<GeneralLayout title={SITE_TITLE} description={'Series Page for DEVACA Blog'} >
+	<main>
+		<section>
+			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
+				{
+					posts.map((post) => (
+						<li class="w-full text-center md:w-[calc(50%-1rem)] border-2 rounded-xl p-4 pb-2">
+							<a href={`/en/series/${urlencode(post.data.series!)}`} class="block">
+								<img class="mb-1 rounded-xl" width={720} height={360} src={post.data.heroImage} alt={`Head image of ${post.data.series}`} />
+								<h4 class="m-0 text-[rgb(var(--black))] text-2xl leading-none underline decoration-sky-300 text-slate-700 dark:text-white">{post.data.series}</h4>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</main>
+</GeneralLayout>

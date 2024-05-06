@@ -1,0 +1,41 @@
+---
+import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
+import GeneralLayout from '@layouts/GeneralLayout.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '@components/FormattedDate.astro';
+import urlencode from '@utils/urlencode'
+
+export async function getStaticPaths() {
+	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en' && post.data.series !== undefined)
+	return posts.map((post) => ({
+		params: { series: urlencode(post.data.series!) },
+	}))
+}
+
+const { series } = Astro.params
+const posts = (await getCollection('blog'))
+				.filter((post) => !post.data.isDraft && post.data.language == 'en' && urlencode(post.data.series!) == series)
+				.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
+---
+
+<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} >
+	<main>
+		<section>
+			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
+				{
+					posts.map((post) => (
+						<li class="w-full text-center md:w-[calc(50%-1rem)] border-2 rounded-xl p-4 pb-1">
+							<a href={`/${post.slug}/`} class="block">
+								<img class="mb-1 rounded-xl" width={720} height={360} src={post.data.heroImage} alt={`Head image of ${post.data.title}`} />
+								<h4 class="m-0 text-[rgb(var(--black))] leading-none">{post.data.title}</h4>
+								<p class="m-0 text-[rgb(var(--gray))]">
+									<FormattedDate date={post.data.pubDate} locale={post.data.language} />
+								</p>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</main>
+</GeneralLayout>
