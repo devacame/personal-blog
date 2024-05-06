@@ -1,0 +1,28 @@
+---
+import { CHIRPY_DOMAIN } from '@consts'
+---
+<script defer src="https://chirpy.dev/bootstrapper.js" data-chirpy-domain={CHIRPY_DOMAIN}></script>
+<section class="w-[80%] h-auto mx-auto my-2">
+    <div
+    class="rounded-lg"
+    data-chirpy-theme="light"
+    data-chirpy-comment="true"
+    id="chirpy-comment"
+    ></div>
+    <script>
+        const theme = (() => {
+			if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+				return localStorage.getItem('theme')
+			}
+			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				return 'dark'
+			}
+				return 'light'
+		})();
+		if (theme === 'light') {
+            document.querySelector('#chirpy-comment')?.setAttribute('data-chirpy-theme', 'light')
+		} else {
+            document.querySelector('#chirpy-comment')?.setAttribute('data-chirpy-theme', 'dark')
+		}
+    </script>
+</section>

@@ -4,6 +4,7 @@ import GeneralLayout from '@layouts/GeneralLayout.astro'
 import FormattedDate from '@components/FormattedDate.astro'
 import SeriesTag from '@components/SeriesTag.astro'
 import Tag from '@components/Tag.astro'
+import Comments from '@components/Comments.astro'
 import urlencode from '@utils/urlencode'
 
 export async function getStaticPaths() {
@@ -50,5 +51,6 @@ const { Content } = await post.render();
 			}
 			</div>
 		</article>
+		<Comments />
 	</main>
 </GeneralLayout>
