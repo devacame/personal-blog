@@ -16,10 +16,10 @@ const { otherLang = '' } = Astro.props
             <svg viewBox="0 0 32.00 32.00" xmlns="http://www.w3.org/2000/svg" stroke-width="1.984"><g id="SVGRepo_bgCarrier2" stroke-width="0"></g><g id="SVGRepo_tracerCarrier2" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier2"><path d="M16.003 18.626l7.081-7.081L25 13.46l-8.997 8.998-9.003-9 1.917-1.916z"></path></g></svg>
         </button>
         <script>
-            document.getElementById('topBtn')!.addEventListener('click', (s) => {document.querySelector('#top')!.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})})
+            document.getElementById('topBtn')!.addEventListener('click', () => {document.querySelector('#top')!.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'})})
         </script>
         <script>
-            document.getElementById('bottomBtn')!.addEventListener('click', (s) => {document.querySelector('#bottom')!.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'nearest'})})
+            document.getElementById('bottomBtn')!.addEventListener('click', () => {document.querySelector('#bottom')!.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'nearest'})})
         </script>
         <ThemeToggleBtn class="" />
         {otherLang && <LanguageBtn otherLang={otherLang} />}
