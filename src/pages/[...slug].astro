@@ -5,7 +5,6 @@ import FormattedDate from '@components/FormattedDate.astro'
 import SeriesTag from '@components/SeriesTag.astro'
 import Tag from '@components/Tag.astro'
 import Comments from '@components/Comments.astro'
-import urlencode from '@utils/urlencode'
 
 export async function getStaticPaths() {
 	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft)
@@ -41,7 +40,7 @@ const { Content } = await post.render();
 					}
 				</div>
 				<h1 class="mb-2">{post.data.title}</h1>
-				{post.data.series && <SeriesTag series={urlencode(post.data.series!)} seriesNum={post.data.seriesNum!} />}
+				{post.data.series && <SeriesTag series={post.data.series!} seriesNum={post.data.seriesNum!} />}
 				<hr class="my-3" />
 			</div>
 			<Content />
