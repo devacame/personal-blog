@@ -5,13 +5,17 @@ import FormattedDate from '@components/FormattedDate.astro'
 import SeriesTag from '@components/SeriesTag.astro'
 import Tag from '@components/Tag.astro'
 import Comments from '@components/Comments.astro'
+import { slugify } from '@utils/postslug'
 
 export async function getStaticPaths() {
-	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft)
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en').map((post) => 
+	{
+		return	{
+			params: slugify(post.slug),
+			props: post,
+		}
+	});
+    return posts
 }
 type Props = CollectionEntry<'blog'>;
 
