@@ -18,15 +18,6 @@ const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft 
 				{
 					posts.map((post) => (
 						<PostCard href={getPostUrl(post.slug)} image={post.data.heroImage} title={post.data.title} date={{date: post.data.pubDate, dateLang: post.data.language}} />
-						// <li class="w-full text-center md:w-[calc(50%-1rem)] border-2 p-1 pb-0 rounded-lg">
-						// 	<a href={getPostUrl(post.slug)} class="block">
-						// 		<img class="mb-1 rounded-xl" width={720} height={360} src={post.data.heroImage} alt={`Head image of ${post.data.title}`} />
-						// 		<h4 class="m-0 text-[rgb(var(--black))] leading-none">{post.data.title}</h4>
-						// 		<p class="m-0 text-[rgb(var(--gray))]">
-						// 			<FormattedDate date={post.data.pubDate} locale={post.data.language} />
-						// 		</p>
-						// 	</a>
-						// </li>
 					))
 				}
 			</ul>
