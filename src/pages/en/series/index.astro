@@ -11,7 +11,7 @@ const posts = (await getCollection('blog'))
                     post.data.language == 'en' &&
                     post.data.series !== undefined &&
                     post.data.seriesNum === 1)
-                .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf())
+                .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 ---
 
 <GeneralLayout title={SITE_TITLE} description={'Series Page for DEVACA Blog'} >
