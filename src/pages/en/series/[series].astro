@@ -1,10 +1,10 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from '@consts';
-import GeneralLayout from '@layouts/GeneralLayout.astro';
-import { getCollection } from 'astro:content';
-import FormattedDate from '@components/FormattedDate.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '@consts'
+import GeneralLayout from '@layouts/GeneralLayout.astro'
+import { getCollection } from 'astro:content'
 import urlencode from '@utils/urlencode'
-import { getPostUrl } from '@utils/postslug';
+import { getPostUrl } from '@utils/postslug'
+import PostCard from '@components/PostCard.astro'
 
 export async function getStaticPaths() {
 	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en' && post.data.series !== undefined)
@@ -25,15 +25,7 @@ const posts = (await getCollection('blog'))
 			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
 				{
 					posts.map((post) => (
-						<li class="w-full text-center md:w-[calc(50%-1rem)] border-2 rounded-xl p-4 pb-1">
-							<a href={getPostUrl(post.slug)} class="block">
-								<img class="mb-1 rounded-xl" width={720} height={360} src={post.data.heroImage} alt={`Head image of ${post.data.title}`} />
-								<h4 class="m-0 text-[rgb(var(--black))] leading-none">{post.data.title}</h4>
-								<p class="m-0 text-[rgb(var(--gray))]">
-									<FormattedDate date={post.data.pubDate} locale={post.data.language} />
-								</p>
-							</a>
-						</li>
+						<PostCard href={getPostUrl(post.slug)} image={post.data.heroImage} title={post.data.title} date={{date: post.data.pubDate, dateLang: post.data.language}} />
 					))
 				}
 			</ul>
