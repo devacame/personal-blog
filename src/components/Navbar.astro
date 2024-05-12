@@ -1,6 +1,6 @@
 ---
 import { SITE_TITLE } from '@consts'
-import { Astronav, StickyHeader, MenuIcon, MenuItems, Dropdown, DropdownItems } from 'astro-navbar'
+import { Astronav, StickyHeader, Dropdown, DropdownItems } from 'astro-navbar'
 import HeaderLink from '@components/HeaderLink.astro'
 import LOGO from '@components/LOGO.astro'
 
@@ -12,7 +12,7 @@ const isHome = !(subpath[1]?.toLowerCase() == 'about' || subpath[1]?.toLowerCase
   scrollY={50}
   activeClass="py-2 bg-white/80 border-gray-200 backdrop-blur-lg"
 >
-    <Astronav>
+    <Astronav closeOnClick={true}>
         <div class="w-full flex flex-row justify-between gap-x-10 md:w-[720px] md:mx-auto">
             <div class="flex">
                 <a href=`/${Astro.currentLocale}` class="grid">
