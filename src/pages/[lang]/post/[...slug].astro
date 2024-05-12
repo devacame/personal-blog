@@ -28,7 +28,7 @@ const { Content } = await post.render();
 	<script>
 		document.getElementById('table-of-contents')?.remove()
 	</script>
-	<main>
+	<main data-pagefind-body>
 		<article class="w-full mx-auto prose dark:prose-invert">
 			<div class="w-full">
 				<Image class="block my-0 mx-auto rounded-xl" style="box-shadow: var(--box-shadow)" width={1020} height={510} src={post.data.heroImage} alt="Head image of "+title />
