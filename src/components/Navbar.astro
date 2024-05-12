@@ -21,7 +21,7 @@ const isHome = !(subpath[1]?.toLowerCase() == 'about' || subpath[1]?.toLowerCase
                 </a>
             </div>
             <Dropdown class="group my-auto">
-                <button class="flex items-center text-black dark:text-white text-2xl">
+                <button class="flex items-center text-black dark:text-white text-2xl transition-transform transform hover:scale-105">
                     <span class={isHome ? 'font-bold underline' : ''}>Blog</span>
                     <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -35,20 +35,20 @@ const isHome = !(subpath[1]?.toLowerCase() == 'about' || subpath[1]?.toLowerCase
                             stroke-linejoin="round"
                             d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
                         </svg>
-                    </button>
-                    <DropdownItems class="relative">
-                        <div class="absolute top-0 left-4 p-8 border-2 border-slate-400/30 bg-white dark:bg-gray-800">
-                            <ul>
-                                <HeaderLink href=`/${Astro.currentLocale}/` class="text-xl">Home</HeaderLink>
-                                <HeaderLink href=`/${Astro.currentLocale}/series` class="text-xl">Series</HeaderLink>
-                                <HeaderLink href=`/${Astro.currentLocale}/tags` class="text-xl">Tags</HeaderLink>
-                                <!-- <HeaderLink href=`/${Astro.currentLocale}/projects`>Projects</HeaderLink> -->
-                            </ul>
-                        </div>
-                    </DropdownItems>
-                </Dropdown>
+                </button>
+                <DropdownItems class="relative">
+                    <div class="absolute top-0 left-4 p-8 border-2 border-slate-400/30 bg-white dark:bg-gray-800">
+                        <ul>
+                            <HeaderLink href=`/${Astro.currentLocale}/` class="text-xl">Home</HeaderLink>
+                            <HeaderLink href=`/${Astro.currentLocale}/series` class="text-xl">Series</HeaderLink>
+                            <HeaderLink href=`/${Astro.currentLocale}/tags` class="text-xl">Tags</HeaderLink>
+                            <!-- <HeaderLink href=`/${Astro.currentLocale}/projects`>Projects</HeaderLink> -->
+                        </ul>
+                    </div>
+                </DropdownItems>
+            </Dropdown>
             <HeaderLink href=`/${Astro.currentLocale}/about` class="my-auto text-2xl">About</HeaderLink>
-            <a href=`/${Astro.currentLocale}/search` class="my-auto fill-none stroke-black dark:stroke-white">
+            <a href=`/${Astro.currentLocale}/search` class="transition-transform transform hover:scale-105 my-auto fill-none stroke-black dark:stroke-white">
                 <svg class="w-8 h-8" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M14.9536 14.9458L21 21M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
             </a>
         </div>

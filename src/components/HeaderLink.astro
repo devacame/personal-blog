@@ -11,7 +11,7 @@ const check = (chkStr: string) => href?.toString().includes(chkStr) != (subpath[
 const isActive = !(check('about') || check('search') || check('series') || check('tags'))
 ---
 
-<a href={href} class:list={[className, { active: isActive }, "hover:text-gray-700 dark:hover:text-gray-200 text-black dark:text-white active:font-bold active:underline"]}>
+<a href={href} class:list={[className, { active: isActive }, "transition-transform transform hover:scale-105 hover:text-gray-700 dark:hover:text-gray-200 text-black dark:text-white active:font-bold active:underline"]}>
 	<slot />
 </a>
 <style>
