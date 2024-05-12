@@ -20,6 +20,10 @@
 	display: none;
 }
 
+.hidden {
+	display: none;
+}
+
 body {
 	font-family: 'SpoqaHanSansNeo', sans-serif;
 	margin: 0;
