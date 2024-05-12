@@ -1,11 +1,12 @@
 ---
 import FormattedDate from '@components/FormattedDate.astro'
+import { Image } from 'astro:assets'
 
 const { href, image, title, date: { date, dateLang } = {date: '', dateLang: ''} } = Astro.props
 ---
 <li class="w-full text-center md:w-[calc(50%-1rem)] border-2 p-1 rounded-xl">
     <a href={href} class="block">
-        <img class="mb-1 rounded-xl" width={720} height={360} src={image} alt={`Head image of ${title}`} />
+        <Image class="mb-1 rounded-xl" width={720} height={360} src={image} alt={`Head image of ${title}`} />
         <h4 class="m-0 text-[var(--black)] dark:text-[var(--gray-light)] underline decoration-cyan-300 leading-none">{title}</h4>
         { date && dateLang &&
             <p class="m-0 text-[var(--gray)]">
