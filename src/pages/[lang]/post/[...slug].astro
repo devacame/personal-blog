@@ -9,7 +9,7 @@ import Comments from '@components/Comments.astro'
 import { slugify } from '@utils/postslug'
 
 export async function getStaticPaths() {
-	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en').map((post) => 
+	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en').map((post) =>
 	{
 		return	{
 			params: slugify(post.slug),
