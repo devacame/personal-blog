@@ -1,32 +1,38 @@
 {
-  "name": "devaca-astro-blog",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro check && astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@astrojs/mdx": "^2.3.0",
-    "@astrojs/rss": "^4.0.5",
-    "@astrojs/sitemap": "^3.1.2",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.6.1",
-    "astro-navbar": "^2.3.2",
-    "astro-pagefind": "^1.5.0",
-    "rehype-katex": "^7.0.0",
-    "remark-collapse": "^0.1.2",
-    "remark-math": "^6.0.0",
-    "remark-normalize-headings": "^4.0.0",
-    "remark-toc": "^9.0.0",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.12"
-  }
+	"name": "devaca-astro-blog",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro check && astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"format:check": "prettier --check .",
+		"format::write": "prettier --write ."
+	},
+	"dependencies": {
+		"@astrojs/check": "^0.5.10",
+		"@astrojs/mdx": "^2.3.0",
+		"@astrojs/rss": "^4.0.5",
+		"@astrojs/sitemap": "^3.1.2",
+		"@astrojs/tailwind": "^5.1.0",
+		"astro": "^4.8.3",
+		"astro-navbar": "^2.3.2",
+		"astro-pagefind": "^1.5.0",
+		"rehype-katex": "^7.0.0",
+		"remark-collapse": "^0.1.2",
+		"remark-math": "^6.0.0",
+		"remark-normalize-headings": "^4.0.0",
+		"remark-toc": "^9.0.0",
+		"sharp": "^0.33.3",
+		"tailwindcss": "^3.4.3",
+		"typescript": "^5.4.5"
+	},
+	"devDependencies": {
+		"@tailwindcss/typography": "^0.5.12",
+		"prettier": "^3.2.5",
+		"prettier-plugin-astro": "^0.13.0",
+		"prettier-plugin-tailwindcss": "^0.5.14"
+	}
 }
