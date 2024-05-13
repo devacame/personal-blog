@@ -1,16 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
-import GeneralLayout from '@layouts/GeneralLayout.astro';
-import { getPostUrl } from '@utils/postslug';
+import { getCollection } from 'astro:content'
+import GeneralLayout from '@layouts/GeneralLayout.astro'
+import RSSPost from '@components/RSSPost.astro'
+import { getPostUrl } from '@utils/postslug'
 
 const newEnPosts = (await getCollection('blog', (post) => !post.data.isDraft && post.data.language == 'en')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 5).map((post) => { return { title: post.data.title, slug: post.slug, date: post.data.pubDate } })
+console.log('en', newEnPosts)
 const newKoPosts = (await getCollection('blog', (post) => !post.data.isDraft && post.data.language == 'ko')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 5).map((post) => { return { title: post.data.title, slug: post.slug, date: post.data.pubDate } })
+console.log('ko', newKoPosts)
 const newAllPosts = newEnPosts.concat(newKoPosts).sort((a, b) => b.date.valueOf() - a.date.valueOf()).slice(0, 5)
-
-const truncateTitle = (title: string): string  => {
-  if (title.length <= 15) return title
-  return title.slice(0, 15) + '...'
-}
+console.log('all', newAllPosts)
 ---
 <!-- Cards from https://tailwindcomponents.com/component/pricing-card-1 by dhaifullah -->
 <GeneralLayout title="RSS" description={Astro.currentLocale == 'en' ? 'RSS Feed Options' : 'RSS 피드 선택 페이지'}>
@@ -26,15 +25,7 @@ const truncateTitle = (title: string): string  => {
               <p class="text-gray-600 mb-6 text-wrap">Daily Life, Programming, and School</p>
               <ol class="text-sm text-gray-600 mb-6">
                 {newEnPosts.map( (post) => {
-                  return (<li class="text-md mb-2 flex items-center">
-                    <svg class="w-4 h-4 mr-2 fill-slate-400" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z"></path></g></svg>
-                    <a href={getPostUrl(post.slug)} class="underline">
-                      {truncateTitle(post.title)}
-                    </a>
-                    <span class="ml-4 text-xs text-indigo-400">
-                      {post.date.toLocaleDateString('en', {year: 'numeric', month: 'short', day: 'numeric'})}
-                    </span>
-                  </li>)
+                  return <RSSPost href={getPostUrl(post.slug)} title={post.title} date={post.date.toLocaleDateString()} />
                 })}
               </ol>
             </div>
@@ -56,15 +47,7 @@ const truncateTitle = (title: string): string  => {
               <p class="text-gray-600 mb-6">일상, 프로그래밍, 유학생활</p>
               <ol class="text-sm text-gray-600 mb-6">
                 {newKoPosts.map( (post) => {
-                  return (<li class="text-md mb-2 flex items-center">
-                    <svg class="w-4 h-4 mr-2 fill-slate-400" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z"></path></g></svg>
-                    <a href={getPostUrl(post.slug)} class="underline">
-                      {truncateTitle(post.title)}
-                    </a>
-                    <span class="ml-4 text-xs text-indigo-400">
-                      {post.date.toLocaleDateString('en', {year: 'numeric', month: 'short', day: 'numeric'})}
-                    </span>
-                  </li>)
+                  return <RSSPost href={getPostUrl(post.slug)} title={post.title} date={post.date.toLocaleDateString()} />
                 })}
               </ol>
             </div>
@@ -86,15 +69,7 @@ const truncateTitle = (title: string): string  => {
               <p class="text-gray-600 mb-6">English & Korean | 영어 & 한글</p>
               <ol class="text-sm text-gray-600 mb-6">
                 {newAllPosts.map( (post) => {
-                  return (<li class="text-md mb-2 flex items-center">
-                    <svg class="w-4 h-4 mr-2 fill-slate-400" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M18.629 15.997l-7.083-7.081L13.462 7l8.997 8.997L13.457 25l-1.916-1.916z"></path></g></svg>
-                    <a href={getPostUrl(post.slug)} class="underline">
-                      {truncateTitle(post.title + '안녕하세요안녕하세요')}
-                    </a>
-                    <span class="ml-4 text-xs text-indigo-400">
-                      {post.date.toLocaleDateString('en', {year: 'numeric', month: 'short', day: 'numeric'})}
-                    </span>
-                  </li>)
+                  return <RSSPost href={getPostUrl(post.slug)} title={post.title} date={post.date.toLocaleDateString()} />
                 })}
               </ol>
             </div>
