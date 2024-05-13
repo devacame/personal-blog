@@ -5,11 +5,8 @@ import RSSPost from '@components/RSSPost.astro'
 import { getPostUrl } from '@utils/postslug'
 
 const newEnPosts = (await getCollection('blog', (post) => !post.data.isDraft && post.data.language == 'en')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 5).map((post) => { return { title: post.data.title, slug: post.slug, date: post.data.pubDate } })
-console.log('en', newEnPosts)
 const newKoPosts = (await getCollection('blog', (post) => !post.data.isDraft && post.data.language == 'ko')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).slice(0, 5).map((post) => { return { title: post.data.title, slug: post.slug, date: post.data.pubDate } })
-console.log('ko', newKoPosts)
 const newAllPosts = newEnPosts.concat(newKoPosts).sort((a, b) => b.date.valueOf() - a.date.valueOf()).slice(0, 5)
-console.log('all', newAllPosts)
 ---
 <!-- Cards from https://tailwindcomponents.com/component/pricing-card-1 by dhaifullah -->
 <GeneralLayout title="RSS" description={Astro.currentLocale == 'en' ? 'RSS Feed Options' : 'RSS 피드 선택 페이지'}>
