@@ -9,9 +9,10 @@ export async function getStaticPaths() {
         { params: {lang: 'ko'} }
     ]
 }
+const { lang } = Astro.params
 ---
 
-<GeneralLayout title={"Search | "+SITE_TITLE} description="Search English Posts">
+<GeneralLayout title={(lang == 'en' ? 'Search | ' : '검색 | ')+SITE_TITLE} description={lang == 'en' ? 'Search English Posts' : '한글 포스트 검색'}>
     <SearchFind id="search" className="pagefind-ui mx-2 my-3" uiOptions={{ showImages: false }} />
     <style is:global>
         html.light {
