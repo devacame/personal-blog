@@ -5,12 +5,20 @@ import { getCollection } from 'astro:content'
 import { getPostUrl } from '@utils/postslug'
 import PostCard from '@components/PostCard.astro'
 
-const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en').sort(
+export async function getStaticPaths() {
+    return [
+        { params: {lang: 'en'} },
+        { params: {lang: 'ko'} }
+    ]
+}
+
+const { lang } = Astro.params
+const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == lang).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 ).slice(0, 20)
 ---
 
-<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} >
+<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} otherLang={lang == 'en' ? 'ko' : 'en'}>
 	<main>
 		<section>
 			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
