@@ -12,7 +12,7 @@ const isHome = !(subpath[1]?.toLowerCase() == 'about' || subpath[1]?.toLowerCase
   scrollY={50}
   activeClass="py-2 bg-white/80 border-gray-200 backdrop-blur-lg"
 >
-    <Astronav closeOnClick={true}>
+    <Astronav>
         <div class="w-full flex flex-row justify-between gap-x-10 md:w-[720px] md:mx-auto">
             <div class="flex">
                 <a href=`/${Astro.currentLocale}` class="grid">
