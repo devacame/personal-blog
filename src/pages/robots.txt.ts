@@ -55,13 +55,13 @@ Disallow: /
 User-agent: YouBot
 Disallow: /
 
-Sitemap: ${new URL('sitemap-index.xml', 'https://'+SITE_URL).href}
+Sitemap: ${new URL('sitemap-index.xml', 'https://' + SITE_URL).href}
 `.trim()
 
 export const GET: APIRoute = () => {
-  return new Response(robotsTxt, {
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8',
-    },
-  })
+	return new Response(robotsTxt, {
+		headers: {
+			'Content-Type': 'text/plain; charset=utf-8',
+		},
+	})
 }

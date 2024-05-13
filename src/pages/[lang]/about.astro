@@ -4,16 +4,13 @@ import { SITE_TITLE, SITE_CONTACT } from '@consts'
 import LOGO from '@components/LOGO.astro'
 
 export async function getStaticPaths() {
-    return [
-        { params: {lang: 'en'} },
-        { params: {lang: 'ko'} }
-    ]
+	return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }]
 }
 
 const i18nText = {
-	"en": {
+	en: {
 		title: 'About Me',
-		description: 'Introducing '+SITE_TITLE,
+		description: 'Introducing ' + SITE_TITLE,
 		otherLang: 'ko',
 		status: 'Computer Science Student',
 		at: 'School',
@@ -24,9 +21,9 @@ const i18nText = {
 		follow: 'Follow Me',
 		visit: (page: string) => `Visit ${page}`,
 	},
-	"ko": {
-		title: SITE_TITLE+'에 대하여',
-		description: SITE_TITLE+' 소개',
+	ko: {
+		title: SITE_TITLE + '에 대하여',
+		description: SITE_TITLE + ' 소개',
 		otherLang: 'en',
 		status: '컴퓨터 과학 학생',
 		at: '대학',
@@ -36,9 +33,9 @@ const i18nText = {
 		aboutText: '',
 		follow: '팔로우',
 		visit: (page: string) => `${page} 방문`,
-	}
+	},
 }
-const { lang } = Astro.params as { lang: "en" | "ko"}
+const { lang } = Astro.params as { lang: 'en' | 'ko' }
 ---
 
 <GeneralLayout
@@ -49,45 +46,94 @@ const { lang } = Astro.params as { lang: "en" | "ko"}
 >
 	<main class="bg-white dark:bg-black">
 		<div class="container mx-auto py-8">
-			<div class="grid grid-cols-4 sm:grid-cols-12 gap-6 px-4">
+			<div class="grid grid-cols-4 gap-6 px-4 sm:grid-cols-12">
 				<div class="col-span-4 sm:col-span-3">
-					<div class="bg-white dark:bg-black shadow-lg shadow-slate-200 dark:shadow-slate-700 rounded-lg p-6">
+					<div
+						class="rounded-lg bg-white p-6 shadow-lg shadow-slate-200 dark:bg-black dark:shadow-slate-700"
+					>
 						<div class="flex flex-col items-center">
-							<LOGO width="4rem" height="4rem" class:list="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0" />
-							<h1 class="text-xl font-bold text-black dark:text-white">{SITE_TITLE}</h1>
-							<p class="text-gray-700 dark:text-gray-200 text-center">{i18nText[lang].status}</p>
-							<a class="text-gray-600 dark:text-gray-300 text-center text-sm" href={i18nText[lang].atRef} target="_blank">
-								@ <span class="underline">{i18nText[lang].at}</span>
+							<LOGO
+								width="4rem"
+								height="4rem"
+								class:list="w-32 h-32 bg-gray-300 rounded-full mb-4 shrink-0"
+							/>
+							<h1
+								class="text-xl font-bold text-black dark:text-white"
+							>
+								{SITE_TITLE}
+							</h1>
+							<p
+								class="text-center text-gray-700 dark:text-gray-200"
+							>
+								{i18nText[lang].status}
+							</p>
+							<a
+								class="text-center text-sm text-gray-600 dark:text-gray-300"
+								href={i18nText[lang].atRef}
+								target="_blank"
+							>
+								@ <span class="underline"
+									>{i18nText[lang].at}</span
+								>
 							</a>
-							<div class="mt-6 flex flex-wrap gap-4 justify-center">
-								<p class="bg-sky-600 select-all text-white py-2 px-4 rounded">{SITE_CONTACT}</p>
+							<div
+								class="mt-6 flex flex-wrap justify-center gap-4"
+							>
+								<p
+									class="select-all rounded bg-sky-600 px-4 py-2 text-white"
+								>
+									{SITE_CONTACT}
+								</p>
 								<!-- <a href="#" class="bg-gray-300 hover:bg-gray-400 text-gray-700 py-2 px-4 rounded">Resume</a> -->
 							</div>
 						</div>
-						<hr class="my-6 border-t border-gray-300">
+						<hr class="my-6 border-t border-gray-300" />
 						<div class="flex flex-col">
-							<span class="text-gray-700 dark:text-gray-200 uppercase font-bold tracking-wider mb-2">{i18nText[lang].stack}</span>
+							<span
+								class="mb-2 font-bold uppercase tracking-wider text-gray-700 dark:text-gray-200"
+								>{i18nText[lang].stack}</span
+							>
 							<ul>
-								<li class="text-black dark:text-white mb-2">JavaScript</li>
-								<li class="text-black dark:text-white mb-2">React</li>
-								<li class="text-black dark:text-white mb-2">Node.js</li>
-								<li class="text-black dark:text-white mb-2">HTML/CSS</li>
-								<li class="text-black dark:text-white mb-2">Tailwind Css</li>
+								<li class="mb-2 text-black dark:text-white">
+									JavaScript
+								</li>
+								<li class="mb-2 text-black dark:text-white">
+									React
+								</li>
+								<li class="mb-2 text-black dark:text-white">
+									Node.js
+								</li>
+								<li class="mb-2 text-black dark:text-white">
+									HTML/CSS
+								</li>
+								<li class="mb-2 text-black dark:text-white">
+									Tailwind Css
+								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<div class="col-span-4 sm:col-span-9">
-					<div class="bg-white dark:bg-black shadow-lg shadow-slate-200 dark:shadow-slate-700 rounded-lg p-6">
-						<h2 class="text-xl text-black dark:text-white font-bold mb-4">{i18nText[lang].about}</h2>
+					<div
+						class="rounded-lg bg-white p-6 shadow-lg shadow-slate-200 dark:bg-black dark:shadow-slate-700"
+					>
+						<h2
+							class="mb-4 text-xl font-bold text-black dark:text-white"
+						>
+							{i18nText[lang].about}
+						</h2>
 						<p class="text-gray-700 dark:text-gray-200">
 							{i18nText[lang].aboutText}
 						</p>
 
-						<h3 class="font-semibold text-black dark:text-white text-center mt-3 -mb-2">
+						<h3
+							class="-mb-2 mt-3 text-center font-semibold text-black dark:text-white"
+						>
 							{i18nText[lang].follow}
 						</h3>
-						<div class="flex justify-center items-center gap-6 my-6">
+						<div
+							class="my-6 flex items-center justify-center gap-6"
+						>
 							<!-- <a class="text-gray-700 dark:text-gray-200 hover:text-blue-600" aria-label={i18nText[lang].visit('LinkedIn')} href=""
 								target="_blank">
 								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-6">
@@ -96,11 +142,21 @@ const { lang } = Astro.params as { lang: "en" | "ko"}
 									</path>
 								</svg>
 							</a> -->
-							<a class="text-gray-700 dark:text-gray-200 hover:text-black dark:hover:text-white" aria-label={i18nText[lang].visit('GitHub')} href=""
-								target="_blank">
-								<svg viewBox="0 0 16 16" aria-hidden="true" class="h-6">
-									<path fill="currentColor"
-										d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z">
+							<a
+								class="text-gray-700 hover:text-black dark:text-gray-200 dark:hover:text-white"
+								aria-label={i18nText[lang].visit('GitHub')}
+								href=""
+								target="_blank"
+							>
+								<svg
+									viewBox="0 0 16 16"
+									aria-hidden="true"
+									class="h-6"
+								>
+									<path
+										fill="currentColor"
+										d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+									>
 									</path>
 								</svg>
 							</a>

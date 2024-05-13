@@ -5,24 +5,32 @@ import { getCollection } from 'astro:content'
 import Tag from '@components/Tag.astro'
 
 export async function getStaticPaths() {
-    return [
-        { params: {lang: 'en'} },
-        { params: {lang: 'ko'} }
-    ]
+	return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }]
 }
 
 const { lang } = Astro.params
 
-const tags: string[] = Array.from(new Set((await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == lang).reduce((cur, post) => cur.concat(post.data.tags), [] as string[])))
+const tags: string[] = Array.from(
+	new Set(
+		(await getCollection('blog'))
+			.filter((post) => !post.data.isDraft && post.data.language == lang)
+			.reduce((cur, post) => cur.concat(post.data.tags), [] as string[]),
+	),
+)
 ---
-<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} otherLang={lang == 'en' ? 'ko' : 'en'}>
+
+<GeneralLayout
+	title={SITE_TITLE}
+	description={SITE_DESCRIPTION}
+	otherLang={lang == 'en' ? 'ko' : 'en'}
+>
 	<main>
 		<section>
-			<ul class="w-full flex flex-wrap gap-2">
+			<ul class="flex w-full flex-wrap gap-2">
 				{
 					tags.map((tag, i) => (
 						<li class="text-center">
-							<Tag colorIndex={i%11} name={tag} />
+							<Tag colorIndex={i % 11} name={tag} />
 						</li>
 					))
 				}

@@ -1,23 +1,32 @@
 ---
 import urlencode from '@utils/urlencode'
 interface Props {
-    series: string
-    seriesNum: number
+	series: string
+	seriesNum: number
 }
 const { series, seriesNum } = Astro.props
 ---
+
 <!-- Tag Component by Stephan @ https://tailwindcomponents.com/components/taglabel -->
 <div class="m-auto text-sm">
-    <div class="inline-block relative py-1 text-xs">
-        <div class="absolute inset-0 fill-sky-200 dark:fill-cyan-700 flex">
-            <svg height="100%" viewBox="0 0 50 100">
-                <path
-                    d="M49.9,0a17.1,17.1,0,0,0-12,5L5,37.9A17,17,0,0,0,5,62L37.9,94.9a17.1,17.1,0,0,0,12,5ZM25.4,59.4a9.5,9.5,0,1,1,9.5-9.5A9.5,9.5,0,0,1,25.4,59.4Z" />
-            </svg>
-            <div class="flex-grow h-full -ml-px bg-sky-200 dark:bg-cyan-700 rounded-md rounded-l-none"></div>
-        </div>
-        <span class="relative text-sky-500 dark:text-cyan-200 uppercase pr-px">
-          <span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a href=`/${Astro.currentLocale}/series/${urlencode(series)}` class="text-sky-600 dark:text-cyan-300 decoration-dashed decoration-indigo-400 dark:decoration-indigo-200 font-bold">{series}</a> #{seriesNum}<span>&nbsp;</span>
-        </span>
-    </div>
+	<div class="relative inline-block py-1 text-xs">
+		<div class="absolute inset-0 flex fill-sky-200 dark:fill-cyan-700">
+			<svg height="100%" viewBox="0 0 50 100">
+				<path
+					d="M49.9,0a17.1,17.1,0,0,0-12,5L5,37.9A17,17,0,0,0,5,62L37.9,94.9a17.1,17.1,0,0,0,12,5ZM25.4,59.4a9.5,9.5,0,1,1,9.5-9.5A9.5,9.5,0,0,1,25.4,59.4Z"
+				></path>
+			</svg>
+			<div
+				class="-ml-px h-full flex-grow rounded-md rounded-l-none bg-sky-200 dark:bg-cyan-700"
+			>
+			</div>
+		</div>
+		<span class="relative pr-px uppercase text-sky-500 dark:text-cyan-200">
+			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a
+				href=`/${Astro.currentLocale}/series/${urlencode(series)}`
+				class="font-bold text-sky-600 decoration-indigo-400 decoration-dashed dark:text-cyan-300 dark:decoration-indigo-200"
+				>{series}</a
+			> #{seriesNum}<span>&nbsp;</span>
+		</span>
+	</div>
 </div>

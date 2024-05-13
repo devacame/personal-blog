@@ -5,27 +5,32 @@ import Footer from '@components/Footer.astro'
 import SiteManipulationBtn from '@components/SiteManipulationBtn.astro'
 
 interface Props {
-    title: string
-    description: string
-    otherLang?: string
-    image?: string
+	title: string
+	description: string
+	otherLang?: string
+	image?: string
 }
 
-const { title, description, image = '/blog-placeholder.jpg', otherLang = '' } = Astro.props
+const {
+	title,
+	description,
+	image = '/blog-placeholder.jpg',
+	otherLang = '',
+} = Astro.props
 ---
 
 <html lang={Astro.currentLocale}>
-    <head>
-        <BaseHead title={title} description={description} image={image} />
-    </head>
-    <body class="bg-white dark:bg-black h-screen">
-        <div class="relative min-h-screen">
-            <div id="top" class="invisible"></div>
-            <Navbar />
-            <slot />
-            <Footer />
-            <SiteManipulationBtn otherLang={otherLang} />
-            <div id="bottom" class="invisible"></div>
-        </div>
-   </body>
+	<head>
+		<BaseHead title={title} description={description} image={image} />
+	</head>
+	<body class="h-screen bg-white dark:bg-black">
+		<div class="relative min-h-screen">
+			<div id="top" class="invisible"></div>
+			<Navbar />
+			<slot />
+			<Footer />
+			<SiteManipulationBtn otherLang={otherLang} />
+			<div id="bottom" class="invisible"></div>
+		</div>
+	</body>
 </html>

@@ -6,25 +6,73 @@ import { getPostUrl } from '@utils/postslug'
 import PostCard from '@components/PostCard.astro'
 
 export async function getStaticPaths() {
-	const enTags = Array.from(new Set((await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en').reduce((cur, post) => cur.concat(post.data.tags), [] as string[]))).map((tag) =>  {return {params: {lang: 'en', tag: tag}}})
-	const koTags = Array.from(new Set((await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'ko').reduce((cur, post) => cur.concat(post.data.tags), [] as string[]))).map((tag) =>  {return {params: {lang: 'ko', tag: tag}}})
+	const enTags = Array.from(
+		new Set(
+			(await getCollection('blog'))
+				.filter(
+					(post) => !post.data.isDraft && post.data.language == 'en',
+				)
+				.reduce(
+					(cur, post) => cur.concat(post.data.tags),
+					[] as string[],
+				),
+		),
+	).map((tag) => {
+		return { params: { lang: 'en', tag: tag } }
+	})
+	const koTags = Array.from(
+		new Set(
+			(await getCollection('blog'))
+				.filter(
+					(post) => !post.data.isDraft && post.data.language == 'ko',
+				)
+				.reduce(
+					(cur, post) => cur.concat(post.data.tags),
+					[] as string[],
+				),
+		),
+	).map((tag) => {
+		return { params: { lang: 'ko', tag: tag } }
+	})
 	return [...enTags, ...koTags]
 }
 
 const { lang, tag } = Astro.params
 const posts = (await getCollection('blog'))
-				.filter((post) => !post.data.isDraft && post.data.language == lang && post.data.tags.includes(tag))
-				.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
+	.filter(
+		(post) =>
+			!post.data.isDraft &&
+			post.data.language == lang &&
+			post.data.tags.includes(tag),
+	)
+	.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
 ---
 
 <GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<main>
-		<h1 class="text-3xl font-bold mb-2 text-[var(--gray-dark)] dark:text-[var(--gray-light)]"><span class="underline decoration-slate-400">{tag}</span> {lang == 'en'? `Post${posts.length > 1 ? 's' : ''}` : `태그를 가진 글${posts.length > 1 ? '들' : ''}`}</h1>
+		<h1
+			class="mb-2 text-3xl font-bold text-[var(--gray-dark)] dark:text-[var(--gray-light)]"
+		>
+			<span class="underline decoration-slate-400">{tag}</span>
+			{
+				lang == 'en'
+					? `Post${posts.length > 1 ? 's' : ''}`
+					: `태그를 가진 글${posts.length > 1 ? '들' : ''}`
+			}
+		</h1>
 		<section>
-			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
+			<ul class="m-0 flex list-none flex-wrap gap-2 p-0 md:gap-8">
 				{
 					posts.map((post) => (
-						<PostCard href={getPostUrl(post.slug)} image={post.data.heroImage} title={post.data.title} date={{date: post.data.pubDate, dateLang: post.data.language}} />
+						<PostCard
+							href={getPostUrl(post.slug)}
+							image={post.data.heroImage}
+							title={post.data.title}
+							date={{
+								date: post.data.pubDate,
+								dateLang: post.data.language,
+							}}
+						/>
 					))
 				}
 			</ul>

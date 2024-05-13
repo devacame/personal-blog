@@ -6,25 +6,35 @@ import { getPostUrl } from '@utils/postslug'
 import PostCard from '@components/PostCard.astro'
 
 export async function getStaticPaths() {
-    return [
-        { params: {lang: 'en'} },
-        { params: {lang: 'ko'} }
-    ]
+	return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }]
 }
 
 const { lang } = Astro.params
-const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == lang).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-).slice(0, 20)
+const posts = (await getCollection('blog'))
+	.filter((post) => !post.data.isDraft && post.data.language == lang)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 20)
 ---
 
-<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} otherLang={lang == 'en' ? 'ko' : 'en'}>
+<GeneralLayout
+	title={SITE_TITLE}
+	description={SITE_DESCRIPTION}
+	otherLang={lang == 'en' ? 'ko' : 'en'}
+>
 	<main>
 		<section>
-			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
+			<ul class="m-0 flex list-none flex-wrap gap-2 p-0 md:gap-8">
 				{
 					posts.map((post) => (
-						<PostCard href={getPostUrl(post.slug)} image={post.data.heroImage} title={post.data.title} date={{date: post.data.pubDate, dateLang: post.data.language}} />
+						<PostCard
+							href={getPostUrl(post.slug)}
+							image={post.data.heroImage}
+							title={post.data.title}
+							date={{
+								date: post.data.pubDate,
+								dateLang: post.data.language,
+							}}
+						/>
 					))
 				}
 			</ul>

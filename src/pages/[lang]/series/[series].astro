@@ -7,25 +7,75 @@ import { getPostUrl } from '@utils/postslug'
 import PostCard from '@components/PostCard.astro'
 
 export async function getStaticPaths() {
-	const enSeries = Array.from(new Set((await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en' && post.data.series != undefined).reduce((cur, post) => [...cur, urlencode(post.data.series!)], [] as string[]))).map((series) =>  {return {params: {lang: 'en', series: series}}})
-	const koSeries = Array.from(new Set((await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'ko' && post.data.series != undefined).reduce((cur, post) => [...cur, urlencode(post.data.series!)], [] as string[]))).map((series) =>  {return {params: {lang: 'ko', series: series}}})
+	const enSeries = Array.from(
+		new Set(
+			(await getCollection('blog'))
+				.filter(
+					(post) =>
+						!post.data.isDraft &&
+						post.data.language == 'en' &&
+						post.data.series != undefined,
+				)
+				.reduce(
+					(cur, post) => [...cur, urlencode(post.data.series!)],
+					[] as string[],
+				),
+		),
+	).map((series) => {
+		return { params: { lang: 'en', series: series } }
+	})
+	const koSeries = Array.from(
+		new Set(
+			(await getCollection('blog'))
+				.filter(
+					(post) =>
+						!post.data.isDraft &&
+						post.data.language == 'ko' &&
+						post.data.series != undefined,
+				)
+				.reduce(
+					(cur, post) => [...cur, urlencode(post.data.series!)],
+					[] as string[],
+				),
+		),
+	).map((series) => {
+		return { params: { lang: 'ko', series: series } }
+	})
 	return [...enSeries, ...koSeries]
 }
 
 const { lang, series } = Astro.params
 const posts = (await getCollection('blog'))
-				.filter((post) => !post.data.isDraft && post.data.language == lang && urlencode(post.data.series!) == series)
-				.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
+	.filter(
+		(post) =>
+			!post.data.isDraft &&
+			post.data.language == lang &&
+			urlencode(post.data.series!) == series,
+	)
+	.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
 ---
 
 <GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<main>
-		<h1 class="text-3xl font-bold mb-2 text-[var(--gray-dark)] dark:text-[var(--gray-light)]"><span class="underline decoration-slate-400">{series}</span> {lang == 'en'? 'Series' : '시리즈'}</h1>
+		<h1
+			class="mb-2 text-3xl font-bold text-[var(--gray-dark)] dark:text-[var(--gray-light)]"
+		>
+			<span class="underline decoration-slate-400">{series}</span>
+			{lang == 'en' ? 'Series' : '시리즈'}
+		</h1>
 		<section>
-			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
+			<ul class="m-0 flex list-none flex-wrap gap-2 p-0 md:gap-8">
 				{
 					posts.map((post) => (
-						<PostCard href={getPostUrl(post.slug)} image={post.data.heroImage} title={post.data.title} date={{date: post.data.pubDate, dateLang: post.data.language}} />
+						<PostCard
+							href={getPostUrl(post.slug)}
+							image={post.data.heroImage}
+							title={post.data.title}
+							date={{
+								date: post.data.pubDate,
+								dateLang: post.data.language,
+							}}
+						/>
 					))
 				}
 			</ul>

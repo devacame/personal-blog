@@ -1,1 +1,7 @@
-export default (series: string = '') => encodeURI(series.toLowerCase().replaceAll(/(' *|%| *& *| *@ | *: *| )/g, '-').replaceAll('.', ''))
+export default (series: string = '') =>
+	encodeURI(
+		series
+			.toLowerCase()
+			.replaceAll(/(' *|%| *& *| *@ | *: *| )/g, '-')
+			.replaceAll('.', ''),
+	)

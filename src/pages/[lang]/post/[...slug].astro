@@ -9,14 +9,15 @@ import Comments from '@components/Comments.astro'
 import { slugify } from '@utils/postslug'
 
 export async function getStaticPaths() {
-	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft).map((post) =>
-	{
-		return	{
-			params: slugify(post.slug),
-			props: post,
-		}
-	})
-    return posts
+	const posts = (await getCollection('blog'))
+		.filter((post) => !post.data.isDraft)
+		.map((post) => {
+			return {
+				params: slugify(post.slug),
+				props: post,
+			}
+		})
+	return posts
 }
 type Props = CollectionEntry<'blog'>
 
@@ -24,35 +25,63 @@ const post = Astro.props
 const { Content } = await post.render()
 ---
 
-<GeneralLayout title={post.data.title} description={post.data.description} otherLang={post.data.finishedLanguage}>
+<GeneralLayout
+	title={post.data.title}
+	description={post.data.description}
+	otherLang={post.data.finishedLanguage}
+>
 	<script>
 		document.getElementById('table-of-contents')?.remove()
 	</script>
 	<main data-pagefind-body>
-		<article class="w-full mx-auto prose dark:prose-invert">
+		<article class="prose mx-auto w-full dark:prose-invert">
 			<div class="w-full">
-				<Image class="block my-0 mx-auto rounded-xl" style="box-shadow: var(--box-shadow)" width={1020} height={510} src={post.data.heroImage} alt="Head image of "+title />
+				<Image
+					class="mx-auto my-0 block rounded-xl"
+					style="box-shadow: var(--box-shadow)"
+					width={1020}
+					height={510}
+					src={post.data.heroImage}
+					alt="Head image of "
+					+title
+				/>
 			</div>
-			<div class="mb-4 py-4 text-center leading-1">
+			<div class="leading-1 mb-4 py-4 text-center">
 				<div class="mb-2 text-[var(--gray)]">
-					<FormattedDate date={post.data.pubDate} locale={post.data.language} />
+					<FormattedDate
+						date={post.data.pubDate}
+						locale={post.data.language}
+					/>
 					{
 						post.data.updatedDate && (
 							<div class="italic">
-								Last updated on <FormattedDate date={post.data.updatedDate} locale={post.data.language} />
+								Last updated on{' '}
+								<FormattedDate
+									date={post.data.updatedDate}
+									locale={post.data.language}
+								/>
 							</div>
 						)
 					}
 				</div>
 				<h1 class="mb-2">{post.data.title}</h1>
-				{post.data.series && <SeriesTag series={post.data.series!} seriesNum={post.data.seriesNum!} />}
+				{
+					post.data.series && (
+						<SeriesTag
+							series={post.data.series!}
+							seriesNum={post.data.seriesNum!}
+						/>
+					)
+				}
 				<hr class="my-3" />
 			</div>
 			<Content />
 			<div class="flex flex-wrap gap-x-2">
-			{
-				post.data.tags.map((tag: string, i: number) => <Tag name={tag} colorIndex={i%11} />)
-			}
+				{
+					post.data.tags.map((tag: string, i: number) => (
+						<Tag name={tag} colorIndex={i % 11} />
+					))
+				}
 			</div>
 		</article>
 		<Comments />

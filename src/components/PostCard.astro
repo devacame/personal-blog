@@ -2,16 +2,34 @@
 import FormattedDate from '@components/FormattedDate.astro'
 import { Image } from 'astro:assets'
 
-const { href, image, title, date: { date, dateLang } = {date: '', dateLang: ''} } = Astro.props
+const {
+	href,
+	image,
+	title,
+	date: { date, dateLang } = { date: '', dateLang: '' },
+} = Astro.props
 ---
-<li class="w-full text-center md:w-[calc(50%-1rem)] border-2 p-1 rounded-xl">
-    <a href={href} class="block">
-        <Image class="mb-1 rounded-xl" width={720} height={360} src={image} alt={`Head image of ${title}`} />
-        <h4 class="m-0 text-[var(--black)] dark:text-[var(--gray-light)] underline decoration-cyan-300 leading-none">{title}</h4>
-        { date && dateLang &&
-            <p class="m-0 text-[var(--gray)]">
-                <FormattedDate date={date} locale={dateLang} />
-            </p>
-        }
-    </a>
+
+<li class="w-full rounded-xl border-2 p-1 text-center md:w-[calc(50%-1rem)]">
+	<a href={href} class="block">
+		<Image
+			class="mb-1 rounded-xl"
+			width={720}
+			height={360}
+			src={image}
+			alt={`Head image of ${title}`}
+		/>
+		<h4
+			class="m-0 leading-none text-[var(--black)] underline decoration-cyan-300 dark:text-[var(--gray-light)]"
+		>
+			{title}
+		</h4>
+		{
+			date && dateLang && (
+				<p class="m-0 text-[var(--gray)]">
+					<FormattedDate date={date} locale={dateLang} />
+				</p>
+			)
+		}
+	</a>
 </li>

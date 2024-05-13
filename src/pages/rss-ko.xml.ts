@@ -4,7 +4,9 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '@consts'
 import { getPostUrl } from '@utils/postslug'
 
 export async function GET(context: { site: any }) {
-	const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'ko').sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	const posts = (await getCollection('blog'))
+		.filter((post) => !post.data.isDraft && post.data.language == 'ko')
+		.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 	return rss({
 		title: SITE_TITLE,
 		description: SITE_DESCRIPTION,

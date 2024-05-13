@@ -1,60 +1,65 @@
 ---
 import GeneralLayout from '@layouts/GeneralLayout.astro'
 import { SITE_TITLE } from '@consts'
-import {default as SearchFind} from 'astro-pagefind/components/Search'
+import { default as SearchFind } from 'astro-pagefind/components/Search'
 
 export async function getStaticPaths() {
-    return [
-        { params: {lang: 'en'} },
-        { params: {lang: 'ko'} }
-    ]
+	return [{ params: { lang: 'en' } }, { params: { lang: 'ko' } }]
 }
 const { lang } = Astro.params
 ---
 
-<GeneralLayout title={(lang == 'en' ? 'Search | ' : '검색 | ')+SITE_TITLE} description={lang == 'en' ? 'Search English Posts' : '한글 포스트 검색'}>
-    <SearchFind id="search" className="pagefind-ui mx-2 my-3" uiOptions={{ showImages: false }} />
-    <style is:global>
-        html.light {
-            --pagefind-ui-scale: 1;
-            --pagefind-ui-primary: #76ABAE;
-            --pagefind-ui-text: #222831;
-            --pagefind-ui-message-text: #000000;
-            --pagefind-ui-result-title-text: #222831;
-            --pagefind-ui-result-text: #000000;
-            --pagefind-ui-background: #ffffff;
-            --pagefind-input-background: #ffffff;
-            --pagefind-ui-border: #BFCFE7;
-            --pagefind-ui-border-width: 2px;
-            --pagefind-ui-border-radius: 13px;
-            --pagefind-ui-tag: #176B87;
-            --pagefind-button-background: var(--pagefind-input-background);
-            --pagefind-button-color: var(--pagefind-ui-message-text);
-        }
-        html.dark {
-            --pagefind-ui-scale: 1;
-            --pagefind-ui-primary: #76ABAE;
-            --pagefind-ui-text: #EEEEEE;
-            --pagefind-ui-message-text: var(--pagefind-ui-text);
-            --pagefind-ui-result-title-text: #F0ECE5;
-            --pagefind-ui-result-text: #F0ECE5;
-            --pagefind-ui-background: #000000;
-            --pagefind-input-background: #000000;
-            --pagefind-ui-border: #BFCFE7;
-            --pagefind-ui-border-width: 2px;
-            --pagefind-ui-border-radius: 13px;
-            --pagefind-ui-tag: #176B87;
-        }
-        #search .pagefind-ui__result-title, #search .pagefind-ui__result-link {
-            display: inline-block;
-        }
-        #search .pagefind-ui__result-excerpt {
-            color: var(--pagefind-ui-result-text);
-            line-height: 1.8em;
-            max-height: 3.6em;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 90vw;
-        }
-    </style>
+<GeneralLayout
+	title={(lang == 'en' ? 'Search | ' : '검색 | ') + SITE_TITLE}
+	description={lang == 'en' ? 'Search English Posts' : '한글 포스트 검색'}
+>
+	<SearchFind
+		id="search"
+		className="pagefind-ui mx-2 my-3"
+		uiOptions={{ showImages: false }}
+	/>
+	<style is:global>
+		html.light {
+			--pagefind-ui-scale: 1;
+			--pagefind-ui-primary: #76abae;
+			--pagefind-ui-text: #222831;
+			--pagefind-ui-message-text: #000000;
+			--pagefind-ui-result-title-text: #222831;
+			--pagefind-ui-result-text: #000000;
+			--pagefind-ui-background: #ffffff;
+			--pagefind-input-background: #ffffff;
+			--pagefind-ui-border: #bfcfe7;
+			--pagefind-ui-border-width: 2px;
+			--pagefind-ui-border-radius: 13px;
+			--pagefind-ui-tag: #176b87;
+			--pagefind-button-background: var(--pagefind-input-background);
+			--pagefind-button-color: var(--pagefind-ui-message-text);
+		}
+		html.dark {
+			--pagefind-ui-scale: 1;
+			--pagefind-ui-primary: #76abae;
+			--pagefind-ui-text: #eeeeee;
+			--pagefind-ui-message-text: var(--pagefind-ui-text);
+			--pagefind-ui-result-title-text: #f0ece5;
+			--pagefind-ui-result-text: #f0ece5;
+			--pagefind-ui-background: #000000;
+			--pagefind-input-background: #000000;
+			--pagefind-ui-border: #bfcfe7;
+			--pagefind-ui-border-width: 2px;
+			--pagefind-ui-border-radius: 13px;
+			--pagefind-ui-tag: #176b87;
+		}
+		#search .pagefind-ui__result-title,
+		#search .pagefind-ui__result-link {
+			display: inline-block;
+		}
+		#search .pagefind-ui__result-excerpt {
+			color: var(--pagefind-ui-result-text);
+			line-height: 1.8em;
+			max-height: 3.6em;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 90vw;
+		}
+	</style>
 </GeneralLayout>

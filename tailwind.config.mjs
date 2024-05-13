@@ -6,11 +6,9 @@ export default {
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['SpoqaHanSansNeo', ...defaultTheme.fontFamily.sans]
-			}
+				sans: ['SpoqaHanSansNeo', ...defaultTheme.fontFamily.sans],
+			},
 		},
 	},
-	plugins: [
-		require('@tailwindcss/typography'),
-	],
+	plugins: [require('@tailwindcss/typography')],
 }

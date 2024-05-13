@@ -1,28 +1,40 @@
 ---
 import { SITE_URL } from '@consts'
 ---
-<script is:inline src="https://chirpy.dev/bootstrapper.js" data-chirpy-domain={SITE_URL}></script>
-<section class="w-[80%] h-auto mx-auto my-2">
-    <div
-    class="rounded-lg"
-    data-chirpy-theme="light"
-    data-chirpy-comment="true"
-    id="chirpy-comment"
-    ></div>
-    <script>
-        const theme = (() => {
-			if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+
+<script
+	is:inline
+	src="https://chirpy.dev/bootstrapper.js"
+	data-chirpy-domain={SITE_URL}></script>
+<section class="mx-auto my-2 h-auto w-[80%]">
+	<div
+		class="rounded-lg"
+		data-chirpy-theme="light"
+		data-chirpy-comment="true"
+		id="chirpy-comment"
+	>
+	</div>
+	<script>
+		const theme = (() => {
+			if (
+				typeof localStorage !== 'undefined' &&
+				localStorage.getItem('theme')
+			) {
 				return localStorage.getItem('theme')
 			}
 			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 				return 'dark'
 			}
-				return 'light'
+			return 'light'
 		})()
 		if (theme === 'light') {
-            document.querySelector('#chirpy-comment')?.setAttribute('data-chirpy-theme', 'light')
+			document
+				.querySelector('#chirpy-comment')
+				?.setAttribute('data-chirpy-theme', 'light')
 		} else {
-            document.querySelector('#chirpy-comment')?.setAttribute('data-chirpy-theme', 'dark')
+			document
+				.querySelector('#chirpy-comment')
+				?.setAttribute('data-chirpy-theme', 'dark')
 		}
-    </script>
+	</script>
 </section>
