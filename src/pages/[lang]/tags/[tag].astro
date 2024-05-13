@@ -17,7 +17,7 @@ const posts = (await getCollection('blog'))
 				.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
 ---
 
-<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} >
+<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<main>
 		<h1 class="text-3xl font-bold mb-2 text-[var(--gray-dark)] dark:text-[var(--gray-light)]"><span class="underline decoration-slate-400">{tag}</span> {lang == 'en'? `Post${posts.length > 1 ? 's' : ''}` : `태그를 가진 글${posts.length > 1 ? '들' : ''}`}</h1>
 		<section>

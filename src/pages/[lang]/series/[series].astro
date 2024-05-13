@@ -18,7 +18,7 @@ const posts = (await getCollection('blog'))
 				.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
 ---
 
-<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} >
+<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
 	<main>
 		<h1 class="text-3xl font-bold mb-2 text-[var(--gray-dark)] dark:text-[var(--gray-light)]"><span class="underline decoration-slate-400">{series}</span> {lang == 'en'? 'Series' : '시리즈'}</h1>
 		<section>
