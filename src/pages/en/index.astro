@@ -7,7 +7,7 @@ import PostCard from '@components/PostCard.astro'
 
 const posts = (await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en').sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-)
+).slice(0, 20)
 ---
 
 <GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} >
