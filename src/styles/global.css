@@ -3,6 +3,36 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+@font-face {
+    font-family: 'SpoqaHanSansNeo';
+    src: url('/fonts/SpoqaHanSansNeo-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SpoqaHanSansNeo';
+    src: url('/fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SpoqaHanSansNeo';
+    src: url('/fonts/SpoqaHanSansNeo-Light.woff2') format('woff2');
+    font-weight: lighter;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SpoqaHanSansNeo';
+    src: url('/fonts/SpoqaHanSansNeo-Thin.woff2') format('woff2');
+    font-weight: thin;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SpoqaHanSansNeo';
+    src: url('/fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
+    font-weight: medium;
+    font-style: normal;
+}
 :root {
 	--accent: #2337ff;
 	--accent-dark: #000d8a;
@@ -25,7 +55,7 @@
 }
 
 body {
-	font-family: 'SpoqaHanSansNeo', sans-serif;
+	font-family: 'SpoqaHanSansNeo';
 	margin: 0;
 	padding: 0;
 	text-align: left;
@@ -78,11 +108,12 @@ hr {
 	border: none;
 	border-top: 1px solid var(--gray-light);
 }
-@media (max-width: 720px) {
+@media (min-width: 720px) {
 	body {
 		font-size: 18px;
 	}
 	main {
+		width: 1080px;
 		padding: 1em;
 	}
 }
