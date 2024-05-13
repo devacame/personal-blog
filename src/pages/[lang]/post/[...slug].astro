@@ -24,7 +24,7 @@ const post = Astro.props;
 const { Content } = await post.render();
 ---
 
-<GeneralLayout title={post.data.title} description={post.data.description}>
+<GeneralLayout title={post.data.title} description={post.data.description} otherLang={post.data.finishedLanguage}>
 	<script>
 		document.getElementById('table-of-contents')?.remove()
 	</script>

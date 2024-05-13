@@ -15,7 +15,7 @@ const { lang } = Astro.params
 
 const tags: string[] = Array.from(new Set((await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == lang).reduce((cur, post) => cur.concat(post.data.tags), [] as string[])))
 ---
-<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} >
+<GeneralLayout title={SITE_TITLE} description={SITE_DESCRIPTION} otherLang={lang == 'en' ? 'ko' : 'en'}>
 	<main>
 		<section>
 			<ul class="w-full flex flex-wrap gap-2">

@@ -20,12 +20,9 @@ const posts = (await getCollection('blog'))
                     post.data.series !== undefined &&
                     post.data.seriesNum === 1)
                 .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-				const enSeries = Array.from(new Set((await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'en' && post.data.series != undefined).reduce((cur, post) => [...cur, post.data.series!], [] as string[]))).map((series) =>  {return {params: {lang: 'en', series: series}}})
-	const koSeries = Array.from(new Set((await getCollection('blog')).filter((post) => !post.data.isDraft && post.data.language == 'ko' && post.data.series != undefined).reduce((cur, post) => [...cur, post.data.series!], [] as string[]))).map((series) =>  {return {params: {lang: 'ko', series: series}}})
-console.log([...enSeries, ...koSeries])
 ---
 
-<GeneralLayout title={SITE_TITLE} description={'Series Page for DEVACA Blog'} >
+<GeneralLayout title={SITE_TITLE} description={'Series Page for DEVACA Blog'} otherLang={lang == 'en' ? 'ko' : 'en'}>
 	<main>
 		<section>
 			<ul class="flex flex-wrap gap-2 md:gap-8 list-none m-0 p-0">
