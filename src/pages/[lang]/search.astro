@@ -2,6 +2,13 @@
 import GeneralLayout from '@layouts/GeneralLayout.astro'
 import { SITE_TITLE } from '@consts'
 import {default as SearchFind} from 'astro-pagefind/components/Search'
+
+export async function getStaticPaths() {
+    return [
+        { params: {lang: 'en'} },
+        { params: {lang: 'ko'} }
+    ]
+}
 ---
 
 <GeneralLayout title={"Search | "+SITE_TITLE} description="Search English Posts">
