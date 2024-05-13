@@ -1,4 +1,4 @@
-import type { APIRoute } from 'astro';
+import type { APIRoute } from 'astro'
 import { SITE_URL } from '@consts'
 
 const robotsTxt = `
@@ -56,12 +56,12 @@ User-agent: YouBot
 Disallow: /
 
 Sitemap: ${new URL('sitemap-index.xml', 'https://'+SITE_URL).href}
-`.trim();
+`.trim()
 
 export const GET: APIRoute = () => {
   return new Response(robotsTxt, {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
     },
-  });
-};
+  })
+}
