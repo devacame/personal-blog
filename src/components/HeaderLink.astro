@@ -1,29 +1,15 @@
 ---
-import type { HTMLAttributes } from 'astro/types'
+const { href, className } = Astro.props
 
-type Props = HTMLAttributes<'a'>
-
-const { href, class: className } = Astro.props
-
-const { pathname } = Astro.url
-const subpath = pathname.split('/').slice(1)
+const currentPath = Astro.url.pathname.split('/')[2]
 const check = (chkStr: string) =>
-	href?.toString().includes(chkStr) != (subpath[1]?.toLowerCase() == chkStr)
-const isActive = !(
-	check('about') ||
-	check('search') ||
-	check('series') ||
-	check('tags')
-)
+	href?.toString().includes(chkStr) != (currentPath?.toLowerCase() == chkStr)
+const isActive = !(check('about') || check('series') || check('tags'))
 ---
 
 <a
 	href={href}
-	class:list={[
-		className,
-		{ active: isActive },
-		'transform text-black transition-transform hover:scale-105 hover:text-gray-700 dark:text-white dark:hover:text-gray-200',
-	]}
+	class={`${className} transform text-black ${isActive ? 'underline' : 'no-underline'} transition-transform hover:scale-105 hover:text-gray-700 dark:text-white dark:hover:text-gray-200`}
 >
 	<slot />
 </a>
