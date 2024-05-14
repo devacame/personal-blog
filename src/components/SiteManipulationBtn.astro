@@ -66,26 +66,22 @@ const { otherLang = '' } = Astro.props
 		</button>
 		<script>
 			document.getElementById('topBtn')!.addEventListener('click', () => {
-				document
-					.querySelector('#top')!
-					.scrollIntoView({
-						behavior: 'smooth',
-						block: 'start',
-						inline: 'nearest',
-					})
+				document.querySelector('#top')!.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start',
+					inline: 'nearest',
+				})
 			})
 		</script>
 		<script>
 			document
 				.getElementById('bottomBtn')!
 				.addEventListener('click', () => {
-					document
-						.querySelector('#bottom')!
-						.scrollIntoView({
-							behavior: 'smooth',
-							block: 'end',
-							inline: 'nearest',
-						})
+					document.querySelector('#bottom')!.scrollIntoView({
+						behavior: 'smooth',
+						block: 'end',
+						inline: 'nearest',
+					})
 				})
 		</script>
 		<ThemeToggleBtn class="" />
