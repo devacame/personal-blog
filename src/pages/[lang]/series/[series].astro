@@ -60,7 +60,9 @@ const posts = (await getCollection('blog'))
 		<h1
 			class="mb-2 text-3xl font-bold text-[var(--gray-dark)] dark:text-[var(--gray-light)]"
 		>
-			<span class="underline decoration-slate-400">{posts[0].data.series}</span>
+			<span class="underline decoration-slate-400"
+				>{posts[0].data.series}</span
+			>
 			{lang == 'en' ? 'Series' : '시리즈'}
 		</h1>
 		<section>
