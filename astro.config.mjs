@@ -8,9 +8,10 @@ import remarkCollapse from 'remark-collapse'
 import rehypeKatex from 'rehype-katex'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
+import { SITE_URL } from '@consts'
 
 export default defineConfig({
-	site: 'http://localhost:4321',
+	site: 'https://' + SITE_URL,
 	i18n: {
 		defaultLocale: 'en',
 		locales: ['en', 'ko'],
