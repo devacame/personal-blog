@@ -6,7 +6,7 @@ dist/
 
 # dependencies
 node_modules/
-.yarn/
+# .yarn/
 yarn.lock
 
 # logs
