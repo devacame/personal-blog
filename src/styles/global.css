@@ -6,32 +6,37 @@
 @font-face {
 	font-family: 'SpoqaHanSansNeo';
 	src: url('/fonts/SpoqaHanSansNeo-Regular.woff2') format('woff2');
-	font-weight: normal;
+	font-weight: 400;
 	font-style: normal;
+	font-display: swap;
 }
 @font-face {
 	font-family: 'SpoqaHanSansNeo';
 	src: url('/fonts/SpoqaHanSansNeo-Bold.woff2') format('woff2');
-	font-weight: bold;
+	font-weight: 700;
 	font-style: normal;
+	font-display: swap;
 }
 @font-face {
 	font-family: 'SpoqaHanSansNeo';
 	src: url('/fonts/SpoqaHanSansNeo-Light.woff2') format('woff2');
-	font-weight: lighter;
+	font-weight: 300;
 	font-style: normal;
+	font-display: swap;
 }
 @font-face {
 	font-family: 'SpoqaHanSansNeo';
 	src: url('/fonts/SpoqaHanSansNeo-Thin.woff2') format('woff2');
-	font-weight: thin;
+	font-weight: 100;
 	font-style: normal;
+	font-display: swap;
 }
 @font-face {
 	font-family: 'SpoqaHanSansNeo';
 	src: url('/fonts/SpoqaHanSansNeo-Medium.woff2') format('woff2');
-	font-weight: medium;
+	font-weight: 500;
 	font-style: normal;
+	font-display: swap;
 }
 :root {
 	--accent: #2337ff;
@@ -54,7 +59,12 @@
 .hidden {
 	display: none;
 }
-
+html {
+	width: 100vw;
+	height: 100%;
+	min-width: 100vw;
+	min-height: 100%;
+}
 body {
 	font-family: 'SpoqaHanSansNeo';
 	margin: 0;

@@ -14,19 +14,19 @@ const {
 	<a href={href} class="block">
 		<Image
 			class="mb-1 rounded-xl"
-			width={720}
-			height={360}
+			width={1080}
+			height={540}
 			src={image}
 			alt={`Head image of ${title}`}
 		/>
 		<h4
-			class="m-0 leading-none text-[var(--black)] underline decoration-cyan-300 dark:text-[var(--gray-light)]"
+			class="m-0 leading-none text-[var(--black)] underline decoration-cyan-300 dark:text-white"
 		>
 			{title}
 		</h4>
 		{
 			date && dateLang && (
-				<p class="m-0 text-[var(--gray)]">
+				<p class="m-0 text-sm text-[var(--gray-dark)] dark:text-[var(--gray-light)]">
 					<FormattedDate date={date} locale={dateLang} />
 				</p>
 			)
