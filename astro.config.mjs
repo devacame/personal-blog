@@ -8,7 +8,8 @@ import remarkCollapse from 'remark-collapse'
 import rehypeKatex from 'rehype-katex'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
-import { SITE_URL } from '@consts'
+import { loadEnv } from 'vite'
+const { SITE_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), '')
 
 export default defineConfig({
 	site: 'https://' + SITE_URL,
