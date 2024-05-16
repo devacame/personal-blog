@@ -9,7 +9,7 @@ const isActive = !(check('about') || check('series') || check('tags'))
 
 <a
 	href={href}
-	class={`${className} transform text-black ${isActive ? 'underline' : 'no-underline'} transition-transform hover:scale-105 hover:text-gray-700 dark:text-white dark:hover:text-gray-200`}
+	class={`${className} transform text-black ${isActive ? 'underline font-bold' : 'no-underline'} transition-transform hover:scale-105 hover:text-gray-700 dark:text-white dark:hover:text-gray-200`}
 >
 	<slot />
 </a>
