@@ -7,6 +7,7 @@ import remarkNormalizeHeadings from 'remark-normalize-headings'
 import remarkCollapse from 'remark-collapse'
 import rehypeKatex from 'rehype-katex'
 import mdx from '@astrojs/mdx'
+import react from '@astrojs/react'
 import sitemap from '@astrojs/sitemap'
 import { loadEnv } from 'vite'
 const { SITE_URL } = loadEnv(process.env.NODE_ENV, process.cwd(), '')
@@ -37,5 +38,5 @@ export default defineConfig({
 			wrap: true,
 		},
 	},
-	integrations: [mdx(), sitemap(), tailwind(), pageFind()],
+	integrations: [mdx(), sitemap(), tailwind(), pageFind(), react()],
 })

@@ -32,8 +32,7 @@ const posts = (await getCollection('blog'))
 				{
 					posts.map((post) => (
 						<PostCard
-							href={`/${lang}/series/${urlencode(post.data.series)}`}
-							image={post.data.heroImage}
+							href={`/${lang}/series/${urlencode(post.data.series)}/`}
 							title={post.data.series}
 						/>
 					))

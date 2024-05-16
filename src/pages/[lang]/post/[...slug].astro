@@ -6,7 +6,7 @@ import FormattedDate from '@components/FormattedDate.astro'
 import SeriesTag from '@components/SeriesTag.astro'
 import Tag from '@components/Tag.astro'
 import Comments from '@components/Comments.astro'
-import { slugify } from '@utils/postslug'
+import { getPostUrl, slugify } from '@utils/postslug'
 
 export async function getStaticPaths() {
 	const posts = (await getCollection('blog'))
@@ -41,7 +41,7 @@ const { Content } = await post.render()
 					style="box-shadow: var(--box-shadow)"
 					width={1020}
 					height={510}
-					src={post.data.heroImage}
+					src={`/open-graph/${getPostUrl(post.slug).slice(1, -1)}.png`}
 					alt="Head image of "
 					+title
 				/>

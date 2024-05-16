@@ -28,7 +28,6 @@ const posts = (await getCollection('blog'))
 					posts.map((post) => (
 						<PostCard
 							href={getPostUrl(post.slug)}
-							image={post.data.heroImage}
 							title={post.data.title}
 							date={{
 								date: post.data.pubDate,

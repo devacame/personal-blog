@@ -4,7 +4,6 @@ import { Image } from 'astro:assets'
 
 const {
 	href,
-	image,
 	title,
 	date: { date, dateLang } = { date: '', dateLang: '' },
 } = Astro.props
@@ -16,7 +15,7 @@ const {
 			class="mb-1 rounded-xl"
 			width={1080}
 			height={540}
-			src={image}
+			src={`/open-graph/${href.slice(1, -1)}.png`}
 			alt={`Head image of ${title}`}
 		/>
 		<h4
