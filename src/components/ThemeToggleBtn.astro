@@ -41,35 +41,39 @@ const { class: className } = Astro.props
 	}
 </style>
 <script is:inline data-astro-rerun>
-	const theme = (() => {
-		if (
-			typeof localStorage !== 'undefined' &&
-			localStorage.getItem('theme')
-		) {
-			return localStorage.getItem('theme')
+	function initTheme() {
+		const theme = (() => {
+			if (
+				typeof localStorage !== 'undefined' &&
+				localStorage.getItem('theme')
+			) {
+				return localStorage.getItem('theme')
+			}
+			if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+				return 'dark'
+			}
+			return 'light'
+		})()
+		if (theme === 'light') {
+			document.documentElement.classList.add('light')
+		} else {
+			document.documentElement.classList.add('dark')
 		}
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			return 'dark'
+		window.localStorage.setItem('theme', theme)
+		const handleToggleClick = () => {
+			const element = document.documentElement
+			element.classList.toggle('dark')
+			element.classList.toggle('light')
+			const isDark = element.classList.contains('dark')
+			localStorage.setItem('theme', isDark ? 'dark' : 'light')
+			document
+				.querySelector('#chirpy-comment')
+				.setAttribute('data-chirpy-theme', isDark ? 'dark' : 'light')
 		}
-		return 'light'
-	})()
-	if (theme === 'light') {
-		document.documentElement.classList.add('light')
-	} else {
-		document.documentElement.classList.add('dark')
-	}
-	window.localStorage.setItem('theme', theme)
-	const handleToggleClick = () => {
-		const element = document.documentElement
-		element.classList.toggle('dark')
-		element.classList.toggle('light')
-		const isDark = element.classList.contains('dark')
-		localStorage.setItem('theme', isDark ? 'dark' : 'light')
 		document
-			.querySelector('#chirpy-comment')
-			.setAttribute('data-chirpy-theme', isDark ? 'dark' : 'light')
+			.getElementById('themeToggle')
+			.addEventListener('click', handleToggleClick)
 	}
-	document
-		.getElementById('themeToggle')
-		.addEventListener('click', handleToggleClick)
+	document.addEventListener('astro:page-load', initTheme)
+	initTheme()
 </script>
