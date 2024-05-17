@@ -1,11 +1,11 @@
 ---
 isDraft: false
 language: en
+finishedLanguage: ko
 tags: ['hi', 'hello', 'no', 'test', 't1', 't2', 't3', 't4', 't5']
 title: 'Markdown Style Guide'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 'Jul 01 2022'
-heroImage: './../assets/blog-placeholder.jpeg'
 series: 'Project: Darius'
 seriesNum: 1
 ---

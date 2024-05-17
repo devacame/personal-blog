@@ -1,11 +1,11 @@
 ---
 isDraft: false
 language: ko
+finishedLanguage: en
 tags: ['hi', 'hello', 'no', 'test', 't1', 't2', 't3', 't4', 't5']
 title: 'Markdown Style Guide 안녕'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 'Jul 01 2022'
-heroImage: './../assets/blog-placeholder.jpeg'
 series: 'Test'
 seriesNum: 1
 ---
@@ -47,6 +47,7 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 #### Output
 
 ![blog placeholder](./../assets/blog-placeholder.jpeg)
+![blog](./../assets/blog-placeholder.jpeg)
 
 ## Blockquotes
 
