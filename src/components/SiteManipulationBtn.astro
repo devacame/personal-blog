@@ -25,7 +25,8 @@ const { otherLang = '' } = Astro.props
 	</button>
 	<div
 		id="siteCrtlBtns"
-		class="invisible flex flex-col-reverse justify-center gap-y-1 opacity-0 duration-200"
+		class="flex flex-col-reverse justify-center gap-y-1 duration-200"
+		style={{ visibility: 'hidden' }}
 	>
 		<button
 			id="bottomBtn"
@@ -66,47 +67,50 @@ const { otherLang = '' } = Astro.props
 			>
 		</button>
 		<script>
-			document.getElementById('topBtn')!.addEventListener('click', () => {
-				document.querySelector('#top')!.scrollIntoView({
-					behavior: 'smooth',
-					block: 'start',
-					inline: 'nearest',
-				})
-			})
-		</script>
-		<script>
-			document
-				.getElementById('bottomBtn')!
-				.addEventListener('click', () => {
-					document.querySelector('#bottom')!.scrollIntoView({
-						behavior: 'smooth',
-						block: 'end',
-						inline: 'nearest',
+			function initMove() {
+				document
+					.getElementById('topBtn')!
+					.addEventListener('click', () => {
+						document.querySelector('#top')!.scrollIntoView({
+							behavior: 'smooth',
+							block: 'start',
+							inline: 'nearest',
+						})
 					})
-				})
+				document
+					.getElementById('bottomBtn')!
+					.addEventListener('click', () => {
+						document.querySelector('#bottom')!.scrollIntoView({
+							behavior: 'smooth',
+							block: 'end',
+							inline: 'nearest',
+						})
+					})
+			}
+			document.addEventListener('astro:page-load', initMove)
+			initMove()
 		</script>
 		<ThemeToggleBtn class="" />
 		{otherLang && <LanguageBtn otherLang={otherLang} />}
 	</div>
 	<script>
-		document.addEventListener('astro:page-load', () => {
+		function initCtrl() {
 			let btns = document.getElementById('siteCrtlBtns')
 			document
-				.getElementById('siteCrtlToggleBtn')
-				?.addEventListener('click', () => {
-					btns?.classList.toggle('invisible')
-					btns?.classList.toggle('visible')
-					btns?.classList.toggle('opacity-0')
-					btns?.classList.toggle('opacity-100')
+				.getElementById('siteCrtlToggleBtn')!
+				.addEventListener('mousedown', (e) => {
+					e.stopImmediatePropagation()
+					if (btns!.style.visibility) btns!.style.visibility = ''
+					else btns!.style.visibility = 'hidden'
 				})
 			document
-				.getElementById('siteCrtlToggleBtn')
-				?.addEventListener('blur', () => {
-					btns?.classList.toggle('invisible')
-					btns?.classList.toggle('visible')
-					btns?.classList.toggle('opacity-0')
-					btns?.classList.toggle('opacity-100')
+				.getElementById('siteCrtlToggleBtn')!
+				.addEventListener('blur', (e) => {
+					e.stopImmediatePropagation()
+					btns!.style.visibility = 'hidden'
 				})
-		})
+		}
+		document.addEventListener('astro:page-load', initCtrl)
+		initCtrl()
 	</script>
 </div>
