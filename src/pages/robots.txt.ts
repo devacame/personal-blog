@@ -40,9 +40,6 @@ Disallow: /
 User-agent: FacebookBot
 Disallow: /
 
-User-agent: Google-Extended
-Disallow: /
-
 User-agent: GPTBot
 Disallow: /
 
