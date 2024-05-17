@@ -47,7 +47,9 @@ const { Content } = await post.render()
 				/>
 			</div>
 			<div class="leading-1 mb-4 py-4 text-center">
-				<div class="mb-2 text-[var(--gray)]">
+				<div
+					class="mb-2 text-[var(--gray-dark)] dark:text-[var(--gray-light)]"
+				>
 					<FormattedDate
 						date={post.data.pubDate}
 						locale={post.data.language}
