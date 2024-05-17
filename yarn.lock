@@ -1895,9 +1895,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"astro@npm:^4.8.3":
-  version: 4.8.3
-  resolution: "astro@npm:4.8.3"
+"astro@npm:^4.8.5":
+  version: 4.8.5
+  resolution: "astro@npm:4.8.5"
   dependencies:
     "@astrojs/compiler": "npm:^2.8.0"
     "@astrojs/internal-helpers": "npm:0.4.0"
@@ -1968,7 +1968,7 @@ __metadata:
       optional: true
   bin:
     astro: astro.js
-  checksum: 10c0/050fd8b57e9c32087b442cf81c4a0d91c8bfaae8a2602ac30922fd7beb7d650de7380dfe5c590cb429e954bc314782a0f781b17fb69d8b33020c0bd4d36b4179
+  checksum: 10c0/7b9be8204af74e736e722a0c28c6f1247626f1ab343c9cf380fae4e0be94b5211bba8630ba68a7aa97c2cd016060dcf4a54a91d6c06510f43160a964e961950e
   languageName: node
   linkType: hard
 
@@ -2488,7 +2488,7 @@ __metadata:
     "@tailwindcss/typography": "npm:^0.5.12"
     "@types/react": "npm:^18.3.2"
     "@types/react-dom": "npm:^18"
-    astro: "npm:^4.8.3"
+    astro: "npm:^4.8.5"
     astro-navbar: "npm:^2.3.2"
     astro-pagefind: "npm:^1.5.0"
     prettier: "npm:^3.2.5"
