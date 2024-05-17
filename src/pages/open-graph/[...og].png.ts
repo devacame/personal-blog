@@ -141,7 +141,7 @@ export async function getStaticPaths() {
 }
 
 export const GET: APIRoute<OgData> = async ({ props }) => {
-	const response = await generateOgImage(props.title, props.date)
+	const response = await generateOgImage(props.title, props.date, props.series)
 	return new Response(response, {
 		status: 200,
 		headers: {

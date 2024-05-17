@@ -1,4 +1,5 @@
 import { SITE_TITLE } from '@consts'
+import React from 'react'
 
 export interface OgData {
 	title: string
@@ -59,16 +60,17 @@ export function Template(props: OgData) {
 						height: '90%',
 					}}
 				>
-					{props.series != '' && (
+					{props.series !== '' && (
 						<h2
 							style={{
-								fontSize: 60,
+								fontSize: 50,
 								fontWeight: 'regular',
-								maxHeight: '80%',
 								overflow: 'hidden',
-								color: '',
+								marginBottom: '0px',
+								textDecoration: 'underline',
+								textDecorationColor: '#0997de'
 							}}
-						></h2>
+						>{props.series}</h2>
 					)}
 					<h1
 						style={{
