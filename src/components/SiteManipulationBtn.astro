@@ -89,22 +89,24 @@ const { otherLang = '' } = Astro.props
 		{otherLang && <LanguageBtn otherLang={otherLang} />}
 	</div>
 	<script>
-		let btns = document.getElementById('siteCrtlBtns')
-		document
-			.getElementById('siteCrtlToggleBtn')
-			?.addEventListener('click', () => {
-				btns?.classList.toggle('invisible')
-				btns?.classList.toggle('visible')
-				btns?.classList.toggle('opacity-0')
-				btns?.classList.toggle('opacity-100')
-			})
-		document
-			.getElementById('siteCrtlToggleBtn')
-			?.addEventListener('blur', () => {
-				btns?.classList.toggle('invisible')
-				btns?.classList.toggle('visible')
-				btns?.classList.toggle('opacity-0')
-				btns?.classList.toggle('opacity-100')
-			})
+		document.addEventListener('astro:page-load', () => {
+			let btns = document.getElementById('siteCrtlBtns')
+			document
+				.getElementById('siteCrtlToggleBtn')
+				?.addEventListener('click', () => {
+					btns?.classList.toggle('invisible')
+					btns?.classList.toggle('visible')
+					btns?.classList.toggle('opacity-0')
+					btns?.classList.toggle('opacity-100')
+				})
+			document
+				.getElementById('siteCrtlToggleBtn')
+				?.addEventListener('blur', () => {
+					btns?.classList.toggle('invisible')
+					btns?.classList.toggle('visible')
+					btns?.classList.toggle('opacity-0')
+					btns?.classList.toggle('opacity-100')
+				})
+		})
 	</script>
 </div>
