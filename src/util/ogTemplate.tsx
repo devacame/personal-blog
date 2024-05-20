@@ -68,9 +68,11 @@ export function Template(props: OgData) {
 								overflow: 'hidden',
 								marginBottom: '0px',
 								textDecoration: 'underline',
-								textDecorationColor: '#0997de'
+								textDecorationColor: '#0997de',
 							}}
-						>{props.series}</h2>
+						>
+							{props.series}
+						</h2>
 					)}
 					<h1
 						style={{
