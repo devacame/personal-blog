@@ -12,12 +12,13 @@ const i18nText = {
 		title: 'About Me',
 		description: 'Introducing ' + SITE_TITLE,
 		otherLang: 'ko',
-		status: 'Computer Science Student',
-		at: 'School',
-		atRef: 'https://example.com',
+		status: 'Computer Science',
+		at: 'Stony Brook',
+		atRef: 'https://stonybrook.edu',
 		stack: 'Skills',
 		about: 'About Me',
-		aboutText: '',
+		aboutText:
+			"I'm from South Korea and started programming since elementary school with Web Dev.\nI've mostly just done some personal projects to make my life easier with Python and JavaScript.\nI like to learn different aspects of Computer Science and its application with education.",
 		follow: 'Follow Me',
 		visit: (page: string) => `Visit ${page}`,
 	},
@@ -25,12 +26,12 @@ const i18nText = {
 		title: SITE_TITLE + '에 대하여',
 		description: SITE_TITLE + ' 소개',
 		otherLang: 'en',
-		status: '컴퓨터 과학 학생',
-		at: '대학',
-		atRef: 'https://example.com',
+		status: '컴퓨터 과학과',
+		at: '스토니브룩 대학',
+		atRef: 'https://stonybrook.edu',
 		stack: '기술 스택',
 		about: 'About',
-		aboutText: '',
+		aboutText: `웹개발을 시작으로 초등학생때부터 프로그래밍을 시작했습니다.\n파이썬이랑 자바스크립트 위주로 개인 프로젝트를 많이 해왔고 컴퓨터과학의 여러 분야에 대해 탐구하고 교육 분야와의 연계에 대해 공부하고 있습니다.`,
 		follow: '팔로우',
 		visit: (page: string) => `${page} 방문`,
 	},
@@ -97,16 +98,19 @@ const { lang } = Astro.params as { lang: 'en' | 'ko' }
 									JavaScript
 								</li>
 								<li class="mb-2 text-black dark:text-white">
-									React
-								</li>
-								<li class="mb-2 text-black dark:text-white">
 									Node.js
 								</li>
 								<li class="mb-2 text-black dark:text-white">
 									HTML/CSS
 								</li>
 								<li class="mb-2 text-black dark:text-white">
-									Tailwind Css
+									Python
+								</li>
+								<li class="mb-2 text-black dark:text-white">
+									Java
+								</li>
+								<li class="mb-2 text-black dark:text-white">
+									C/C++
 								</li>
 							</ul>
 						</div>
@@ -121,10 +125,15 @@ const { lang } = Astro.params as { lang: 'en' | 'ko' }
 						>
 							{i18nText[lang].about}
 						</h2>
-						<p class="text-gray-700 dark:text-gray-200">
-							{i18nText[lang].aboutText}
-						</p>
-
+						{
+							i18nText[lang].aboutText
+								.split('\n')
+								.map((line) => (
+									<p class="mx-2 text-gray-700 dark:text-gray-200">
+										{line}
+									</p>
+								))
+						}
 						<h3
 							class="-mb-2 mt-3 text-center font-bold text-black dark:text-white"
 						>
