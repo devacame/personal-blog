@@ -12,6 +12,7 @@ const { lang } = Astro.params
 <GeneralLayout
 	title={(lang == 'en' ? 'Search | ' : '검색 | ') + SITE_TITLE}
 	description={lang == 'en' ? 'Search English Posts' : '한글 포스트 검색'}
+	otherLang={lang == 'en' ? 'ko' : 'en'}
 >
 	<SearchFind
 		id="search"
