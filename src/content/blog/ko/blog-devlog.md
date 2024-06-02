@@ -3,6 +3,7 @@ isDraft: false
 title: 블로그 개발기 | Astro + Tailwind
 description: Astro Framework와 Tailwind 스타일을 사용한 이 블로그 개발기
 pubDate: May 31, 2024
+updatedDate: June 2, 2024
 language: ko
 tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
 ---
@@ -279,3 +280,5 @@ Tailwind는 신입니다.
 블로그를 얼마나 꾸준히 쓸지는 모르겠지만 열심히 만들었으니 열심히 노력해보려고 합니다.(사실 노력과 사용은 상관관계가 없습니다 ㅋㅋㅋ)
 
 개발 일지랑 컴퓨터과학과 더불어 유학 생활도 올려보려하니 재밌게 봐주시면 감사하겠습니다!
+
+## [블로그 깃허브](https://github.com/devacame/personal-blog)
