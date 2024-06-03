@@ -3,7 +3,7 @@ isDraft: false
 title: 블로그 개발기 | Astro + Tailwind
 description: Astro Framework와 Tailwind 스타일을 사용한 이 블로그 개발기
 pubDate: May 31, 2024
-updatedDate: June 2, 2024
+updatedDate: June 3, 2024
 language: ko
 tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
 ---
@@ -254,6 +254,12 @@ ViewTransition과는 다르게 이건 무조건 필요한 부분이기 때문에
 이슈는 클로즈되었지만 사실 해결이 안된 상태인데 저는 `false`로 설정하니 해결이 되어서 Astro의 라우팅 부분이 i18n 관련 부분과 충돌이 있는 것 같습니다.
 
 그러면 저게 왜 필요한가 싶으실텐데, i18n 관련 기능 중에 `getRelativeUrl`이라고 어떤 페이지의 다른 언어 버전 url을 반환하는 함수가 있는데 저는 워크플로우 상 저걸 쓰지 않고 직접 하나하나 설정을 하는게 더 편해서 그랬지만 저 함수를 써서 개발하시는 분들은 조금 골치아파지실 수 있습니다.
+
+***06/03/2024 업데이트***
+
+한글로된 시리즈/태그 이름이 오픈그래프 이미지를 생성할 시에 한글이 URL 인코딩되어 getStaticPath에 제대로 등록되지 않아 빌드가 되지 않는 문제가 생겼습니다.
+
+이를 해결하기 위해 [hangul-util 라이브러리](https://github.com/hyukson/hangul-util)의 `normalize`함수를 통해 한글을 영문으로 변환하는 구조로 코드를 바꿨습니다.
 
 #### 스타일링
 
