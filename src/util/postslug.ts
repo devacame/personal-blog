@@ -1,5 +1,7 @@
+import { normalize } from 'hangul-util'
+
 const slugify = (slugStr: string) => {
-	const [lang, ...slug] = slugStr.split('/')
+	const [lang, ...slug] = normalize(slugStr, false).split('/')
 	return {
 		lang: lang,
 		slug: slug.join('/'),

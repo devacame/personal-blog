@@ -54,7 +54,7 @@ export async function getStaticPaths() {
 		),
 	).map(({ tag, lang }) => {
 		return {
-			params: { og: `${lang}/tags/${tag}` },
+			params: { og: `${lang}/tags/${urlencode(tag)}` },
 			props: {
 				title: `${tag} ${lang == 'en' ? 'Tag' : '태그'}`,
 			},

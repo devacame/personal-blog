@@ -1,6 +1,7 @@
+import { normalize } from 'hangul-util'
 export default (series: string = '') =>
 	encodeURI(
-		series
+		normalize(series, false)
 			.toLowerCase()
 			.replaceAll(/(' *|%| *& *| *@ | *: *| )/g, '-')
 			.replaceAll('.', ''),

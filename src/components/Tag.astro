@@ -1,4 +1,5 @@
 ---
+import urlencode from '@utils/urlencode'
 interface Props {
 	colorIndex: number
 	name: string
@@ -47,7 +48,7 @@ let colorVariant = [
 		</div>
 		<span class=`relative uppercase pr-px`>
 			<span>&nbsp;&nbsp;&nbsp;&nbsp;</span><a
-				href=`/${Astro.currentLocale}/tags/${name}`
+				href=`/${Astro.currentLocale}/tags/${urlencode(name)}`
 				class=`font-medium no-underline ${colorVariant[colorIndex].text}`
 				>{name}</a
 			><span>&nbsp;</span>

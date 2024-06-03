@@ -4,6 +4,7 @@ import GeneralLayout from '@layouts/GeneralLayout.astro'
 import { getCollection } from 'astro:content'
 import { getPostUrl } from '@utils/postslug'
 import PostCard from '@components/PostCard.astro'
+import urlencode from '@utils/urlencode'
 
 export async function getStaticPaths() {
 	const enTags = Array.from(
@@ -18,7 +19,10 @@ export async function getStaticPaths() {
 				),
 		),
 	).map((tag) => {
-		return { params: { lang: 'en', tag: tag } }
+		return {
+			params: { lang: 'en', tag: urlencode(tag) },
+			props: { tagName: tag },
+		}
 	})
 	const koTags = Array.from(
 		new Set(
@@ -32,18 +36,22 @@ export async function getStaticPaths() {
 				),
 		),
 	).map((tag) => {
-		return { params: { lang: 'ko', tag: tag } }
+		return {
+			params: { lang: 'ko', tag: urlencode(tag) },
+			props: { tagName: tag },
+		}
 	})
 	return [...enTags, ...koTags]
 }
 
-const { lang, tag } = Astro.params
+const { lang } = Astro.params
+const { tagName } = Astro.props
 const posts = (await getCollection('blog'))
 	.filter(
 		(post) =>
 			!post.data.isDraft &&
 			post.data.language == lang &&
-			post.data.tags.includes(tag),
+			post.data.tags.includes(tagName),
 	)
 	.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
 ---
@@ -53,7 +61,7 @@ const posts = (await getCollection('blog'))
 		<h1
 			class="mb-2 text-3xl font-bold text-[var(--gray-dark)] dark:text-[var(--gray-light)]"
 		>
-			<span class="underline decoration-slate-400">{tag}</span>
+			<span class="underline decoration-slate-400">{tagName}</span>
 			{
 				lang == 'en'
 					? `Post${posts.length > 1 ? 's' : ''}`

@@ -2534,6 +2534,7 @@ __metadata:
     astro: "npm:^4.9.2"
     astro-navbar: "npm:^2.3.2"
     astro-pagefind: "npm:^1.5.0"
+    hangul-util: "npm:^0.1.4"
     prettier: "npm:^3.2.5"
     prettier-plugin-astro: "npm:^0.13.0"
     prettier-plugin-tailwindcss: "npm:^0.5.14"
@@ -3233,6 +3234,13 @@ __metadata:
     section-matter: "npm:^1.0.0"
     strip-bom-string: "npm:^1.0.0"
   checksum: 10c0/e38489906dad4f162ca01e0dcbdbed96d1a53740cef446b9bf76d80bec66fa799af07776a18077aee642346c5e1365ed95e4c91854a12bf40ba0d4fb43a625a6
+  languageName: node
+  linkType: hard
+
+"hangul-util@npm:^0.1.4":
+  version: 0.1.4
+  resolution: "hangul-util@npm:0.1.4"
+  checksum: 10c0/5007471fa84807caa6a067331bbcf393b84402f3eb223c0ee7b86f4e5dc58302f6e9321b48ad3f7d6d6de3acefeca62487781ac3ee0af928ee392d216f4cfef8
   languageName: node
   linkType: hard
 
