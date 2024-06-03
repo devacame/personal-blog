@@ -7,6 +7,7 @@ updatedDate: June 2, 2024
 language: ko
 tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
 ---
+
 ## Table of Contents
 
 ## 블로그를 직접 개발한 이유
@@ -21,9 +22,9 @@ tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
 
 ### [Astro](https://astro.build)
 
-- 가장 근간이 되는 웹 프레임워크로 컨텐츠 중심을 강조합니다.
-- 마크다운/MDX를 공식 지원하고 다른 자바스크립트 라이브러리(React 등)를 사용하기도 간편합니다.
-- 아래는 Astro에서 사용한 플러그인들입니다.
+-   가장 근간이 되는 웹 프레임워크로 컨텐츠 중심을 강조합니다.
+-   마크다운/MDX를 공식 지원하고 다른 자바스크립트 라이브러리(React 등)를 사용하기도 간편합니다.
+-   아래는 Astro에서 사용한 플러그인들입니다.
     | 이름 | 목적 |
     |-----|-----|
     |mdx|MDX 파일 지원|
@@ -32,16 +33,16 @@ tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
     |sitemap|사이트맵 생성 플러그인|
     |rss|RSS 생성을 위한 플러그인|
     |[astro-pagefind](https://github.com/shishkin/astro-pagefind)|PageFind 검색 기능을 추가하는 플러그인|
-- 또한, Astro 플러그인은 아니지만 네비게이션 바를 편리하게 만들 수 있는 [Astro Navbar](https://github.com/surjithctly/astro-navbar) 패키지를 사용하였습니다.
+-   또한, Astro 플러그인은 아니지만 네비게이션 바를 편리하게 만들 수 있는 [Astro Navbar](https://github.com/surjithctly/astro-navbar) 패키지를 사용하였습니다.
 
-###  [Tailwind](https://tailwindcss.com)
+### [Tailwind](https://tailwindcss.com)
 
-- HTML 클래스로 간편하게 스타일링을 할 수 있는 프레임워크로 CSS를 못하는 저에게 큰 도움이 되었습니다.
-- 특히 [타이포그래피 플러그인](https://github.com/tailwindlabs/tailwindcss-typography)은 간단히 헤딩, 문단, 리스트, 테이블 등의 기본적인 HTML 요소에 대한 스타일링을 할 수 있어 저는 배치만 하면 되는 편리한 공식 플러그인입니다. (물론 배치가 제일 짜증난다고 생각합니다)
+-   HTML 클래스로 간편하게 스타일링을 할 수 있는 프레임워크로 CSS를 못하는 저에게 큰 도움이 되었습니다.
+-   특히 [타이포그래피 플러그인](https://github.com/tailwindlabs/tailwindcss-typography)은 간단히 헤딩, 문단, 리스트, 테이블 등의 기본적인 HTML 요소에 대한 스타일링을 할 수 있어 저는 배치만 하면 되는 편리한 공식 플러그인입니다. (물론 배치가 제일 짜증난다고 생각합니다)
 
 ### [Markdown](https://ko.wikipedia.org/wiki/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4)
 
-- 개발자 분들은 README 파일 때문이라도 마크다운에 대해 접해보신 경우가 많으실 겁니다. 아래는 사용한 플러그인들 입니다.
+-   개발자 분들은 README 파일 때문이라도 마크다운에 대해 접해보신 경우가 많으실 겁니다. 아래는 사용한 플러그인들 입니다.
     | 이름 | 목적 |
     |-----|-----|
     |[RemarkTOC](https://github.com/remarkjs/remark-toc)|목차 생성 플러그인|
@@ -50,14 +51,14 @@ tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
 
 ### [Satori](https://github.com/vercel/satori)
 
-- 자동으로 [오픈그래프](https://ogp.me/) 사진을 만들기 위한 사용한 Vercel의 사토리 라이브러리로 HTML을 SVG로 만들어줍니다.
-- 제 블로그의 모든 대표 이미지(이 글의 맨 위에 있는 이미지)들는 [Astro-Paper](https://github.com/satnaing/astro-paper) 템플릿과 [이 블로그 포스트](https://jafaraziz.com/blog/generate-open-graph-images-with-astro-and-satori/)를 참고하여 모두 Satori로 자동 생성한 이미지들입니다.
+-   자동으로 [오픈그래프](https://ogp.me/) 사진을 만들기 위한 사용한 Vercel의 사토리 라이브러리로 HTML을 SVG로 만들어줍니다.
+-   제 블로그의 모든 대표 이미지(이 글의 맨 위에 있는 이미지)들는 [Astro-Paper](https://github.com/satnaing/astro-paper) 템플릿과 [이 블로그 포스트](https://jafaraziz.com/blog/generate-open-graph-images-with-astro-and-satori/)를 참고하여 모두 Satori로 자동 생성한 이미지들입니다.
 
 ### [Pagefind](https://pagefind.app/)
 
-- Astro 플러그인에 적힌 것처럼 Pagefind를 사용하여 검색 기능을 추가하였습니다.
-- Pagefind는 정적 검색 라이브러리로 한글을 지원하고 라이브러리 크기도 크지 않은 라이브러리라 원래 사용하던 [fuse.js](https://fusejs.io/)에서 넘어오게 되었습니다.(사실 아래 이유가 더 큽니다)
-- 해당 플러그인은 기본적인 UI까지 제공하기 때문에 간단히 임포트하여 요소를 추가하는 것만으로 사용할 수 있다는 편리함이 있습니다.
+-   Astro 플러그인에 적힌 것처럼 Pagefind를 사용하여 검색 기능을 추가하였습니다.
+-   Pagefind는 정적 검색 라이브러리로 한글을 지원하고 라이브러리 크기도 크지 않은 라이브러리라 원래 사용하던 [fuse.js](https://fusejs.io/)에서 넘어오게 되었습니다.(사실 아래 이유가 더 큽니다)
+-   해당 플러그인은 기본적인 UI까지 제공하기 때문에 간단히 임포트하여 요소를 추가하는 것만으로 사용할 수 있다는 편리함이 있습니다.
     ```js
     import { default as SearchFind } from 'astro-pagefind/components/Search'
     ```
@@ -77,16 +78,17 @@ tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
 ### 특수 요소들
 
 1. 다국어 지원
-   - 유학생이라 영문으로 글 쓸이 더 많지만 한글로도 글을 쓰고 싶어 어떻게 보면 필수 요소였습니다.
+    - 유학생이라 영문으로 글 쓸이 더 많지만 한글로도 글을 쓰고 싶어 어떻게 보면 필수 요소였습니다.
 2. 수학 렌더링(katex) 지원
 3. 로그인이 필요없는 댓글
-   - 개발 관련 글이 대부분이라 [giscus](https://giscus.app/)를 쓰면 더 편했겠지만 유학생활에 대한 내용들은 개발자분들 외에도 질문이 있을 것 같아서 로그인을 하지 않아도 댓글을 달 수 있는 서비스가 필요했습니다.
+    - 개발 관련 글이 대부분이라 [giscus](https://giscus.app/)를 쓰면 더 편했겠지만 유학생활에 대한 내용들은 개발자분들 외에도 질문이 있을 것 같아서 로그인을 하지 않아도 댓글을 달 수 있는 서비스가 필요했습니다.
 
 ## 개발 과정
 
 이 블로그는 4/14/2024에 시작하여 5/20/2024에 마무리하였습니다.
 
 전체적인 과정은 다음과 같습니다.
+
 1. 블로그 글 페이지
 2. 편의 기능 추가(검색, 사이트 조작 버튼, 댓글)
 3. 다국어 지원 및 기타 페이지 개발
@@ -113,34 +115,34 @@ tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
 
 ```css
 html.light {
-    --pagefind-ui-scale: 1;
-    --pagefind-ui-primary: #76abae;
-    --pagefind-ui-text: #222831;
-    --pagefind-ui-message-text: #000000;
-    --pagefind-ui-result-title-text: #222831;
-    --pagefind-ui-result-text: #000000;
-    --pagefind-ui-background: #ffffff;
-    --pagefind-input-background: #ffffff;
-    --pagefind-ui-border: #bfcfe7;
-    --pagefind-ui-border-width: 2px;
-    --pagefind-ui-border-radius: 13px;
-    --pagefind-ui-tag: #176b87;
-    --pagefind-button-background: var(--pagefind-input-background);
-    --pagefind-button-color: var(--pagefind-ui-message-text);
+	--pagefind-ui-scale: 1;
+	--pagefind-ui-primary: #76abae;
+	--pagefind-ui-text: #222831;
+	--pagefind-ui-message-text: #000000;
+	--pagefind-ui-result-title-text: #222831;
+	--pagefind-ui-result-text: #000000;
+	--pagefind-ui-background: #ffffff;
+	--pagefind-input-background: #ffffff;
+	--pagefind-ui-border: #bfcfe7;
+	--pagefind-ui-border-width: 2px;
+	--pagefind-ui-border-radius: 13px;
+	--pagefind-ui-tag: #176b87;
+	--pagefind-button-background: var(--pagefind-input-background);
+	--pagefind-button-color: var(--pagefind-ui-message-text);
 }
 html.dark {
-    --pagefind-ui-scale: 1;
-    --pagefind-ui-primary: #76abae;
-    --pagefind-ui-text: #eeeeee;
-    --pagefind-ui-message-text: var(--pagefind-ui-text);
-    --pagefind-ui-result-title-text: #f0ece5;
-    --pagefind-ui-result-text: #f0ece5;
-    --pagefind-ui-background: #000000;
-    --pagefind-input-background: #000000;
-    --pagefind-ui-border: #bfcfe7;
-    --pagefind-ui-border-width: 2px;
-    --pagefind-ui-border-radius: 13px;
-    --pagefind-ui-tag: #176b87;
+	--pagefind-ui-scale: 1;
+	--pagefind-ui-primary: #76abae;
+	--pagefind-ui-text: #eeeeee;
+	--pagefind-ui-message-text: var(--pagefind-ui-text);
+	--pagefind-ui-result-title-text: #f0ece5;
+	--pagefind-ui-result-text: #f0ece5;
+	--pagefind-ui-background: #000000;
+	--pagefind-input-background: #000000;
+	--pagefind-ui-border: #bfcfe7;
+	--pagefind-ui-border-width: 2px;
+	--pagefind-ui-border-radius: 13px;
+	--pagefind-ui-tag: #176b87;
 }
 ```
 
@@ -163,7 +165,7 @@ ViewTransition은 사이트 내에서 페이지 이동시 공통 요소들을 �
 
 물론 Astro 문서에는 ViewTransition 사용시 스크립트를 어떻게 사용해야 하는지가 기술되어 있으며 스택오버플로우 등에도 여러 답변이 있었습니다만 하나도 안 통하길래 결국 다시 원복을 시켰습니다. (근데 ViewTransition 쓰니까 깔끔하긴 해서 버그인지 뭔지는 몰라도 개선되었으면 좋겠네요...)
 
-* 추가로 서술하자면 Astro는 기본적으로 스크립트 태그를 정적 생성 시에 실행하고 빌드 후 페이지에는 스크립트 내용이 들어가지 않습니다. 아마 이 과정에서 내부적으로 무슨 문제가 발생한 것으로 추측 중입니다.
+-   추가로 서술하자면 Astro는 기본적으로 스크립트 태그를 정적 생성 시에 실행하고 빌드 후 페이지에는 스크립트 내용이 들어가지 않습니다. 아마 이 과정에서 내부적으로 무슨 문제가 발생한 것으로 추측 중입니다.
 
 #### 댓글
 
@@ -174,10 +176,10 @@ ViewTransition은 사이트 내에서 페이지 이동시 공통 요소들을 �
 
 ```html
 <div
-id="convocomet-widget"
-data-page="YOUR_PAGE_ID"
-data-site="YOUR_SITE_ID"
-data-theme="YOUR_THEME"
+	id="convocomet-widget"
+	data-page="YOUR_PAGE_ID"
+	data-site="YOUR_SITE_ID"
+	data-theme="YOUR_THEME"
 ></div>
 <script src="https://convocomet.dev/widget.js" async></script>
 ```
@@ -191,10 +193,12 @@ data-theme="YOUR_THEME"
 다국어 지원은 Astro가 i18n 지원이 있어서 쉽게 갈 수 있었습니다...라고 하면 거짓말입니다.
 
 Astro의 페이지 라우팅 방식을 고려했을 때 다국어 지원은 두가지 방법으로 가능합니다.
+
 1. 각 언어별로 폴더를 만든다
 2. 매개변수 폴더(예: [lang]/[post].astro)로 한 폴더 해결한다.
 
 그리고 저는 1로 개발했다가 2로 옮겼습니다...
+
 ```bash
 # 1번 방식
 pages/
@@ -214,6 +218,7 @@ pages/
     [slug].astro # 블로그 포스트 페이지
     404.astro
 ```
+
 ```bash
 # 2번 방식
 pages/
@@ -226,11 +231,13 @@ pages/
     index.astro
     404.astro
 ```
+
 보다시피 1번으로 하면 같은 파일이 두 개씩 생기니 너무 비효율적인거 같아 수정하게 되었습니다.
 
 그런데 사실 이 부분은 어려운 부분이 아니었습니다. (그냥 파일에 언어별로 텍스트 설정하고 getStaticPaths만 잘 설정하면 되니까요)
 
 문제는 저 폴더 안에 들어있지 않은, 1번 방식의 404.astro에서 발생했습니다. Astro는 `astro.config.mjs`로 설정하게 되는데 여기서 아래 `prefixDefaultLocale`가 문제가 되었습니다.
+
 ```js
 i18n: {
 		defaultLocale: 'en',
@@ -241,6 +248,7 @@ i18n: {
 		},
 	},
 ```
+
 저 부분을 `true`로 설정하면 404.astro뿐만 아니라 같은 레벨의 페이지들이 모두 렌더가 안되는 현상이 일어났습니다.
 ViewTransition과는 다르게 이건 무조건 필요한 부분이기 때문에 깃허브에 이슈를 넣으려고 하다 [이 이슈](https://github.com/withastro/astro/issues/11011)를 찾게 되었습니다.
 이슈는 클로즈되었지만 사실 해결이 안된 상태인데 저는 `false`로 설정하니 해결이 되어서 Astro의 라우팅 부분이 i18n 관련 부분과 충돌이 있는 것 같습니다.
@@ -265,7 +273,7 @@ Tailwind는 신입니다.
 
 그래도 편리성을 위해서라면 블로그에는 꼭 있어야한다고 생각하기 때문에 Astro가 제공하는 플러그인을 통해서 각 언어 및 통합 피드를 만들어두었습니다.
 
-* 만약 태그별 혹은 시리즈별 피드도 추가하는 게 좋다고 생각하시면 댓글 남겨주세요!
+-   만약 태그별 혹은 시리즈별 피드도 추가하는 게 좋다고 생각하시면 댓글 남겨주세요!
 
 오픈그래프같은 경우는 템플릿에 head부분에 관련 태그들이 추가되어있길래 사실 별 생각이 없었는데, 제가 개발한 사이트들을 친구들과 공유할때 대표 이미지가 없으면 좀 밋밋해보이는 경우가 있어서 어떻게하면 좀 자동화할 수 있을까를 고민하다 satori가 떠올라서 막 개발한 케이스입니다. (이걸로 블로그 글 대표이미지도 퉁칠 수 있는게 제일 좋습니다)
 
