@@ -23,6 +23,20 @@ type Props = CollectionEntry<'blog'>
 
 const post = Astro.props
 const { Content } = await post.render()
+
+const allPosts = (await getCollection('blog'))
+	.filter(
+		(tpost) =>
+			!tpost.data.isDraft && tpost.data.language == Astro.currentLocale,
+	)
+	.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
+let seriesPosts: Props[] = []
+if (post.data.series != undefined) {
+	seriesPosts = allPosts
+		.filter((tpost) => tpost.data.series == post.data.series)
+		.slice(0, 5)
+}
+const newPosts = allPosts.slice(0, 5)
 ---
 
 <GeneralLayout
@@ -88,6 +102,58 @@ const { Content } = await post.render()
 				}
 			</div>
 		</article>
+		{
+			seriesPosts.length > 0 && (
+				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col text-black dark:text-white">
+					<h2 class="text-lg font-bold">
+						{post.data.language == 'en'
+							? `Others in ${post.data.series}`
+							: `${post.data.series}의 다른 글`}
+					</h2>
+					<ul class="flex flex-col gap-y-1">
+						{seriesPosts.map((seriesPost) => (
+							<a href={getPostUrl(seriesPost.slug)}>
+								<li class="flex justify-between align-middle">
+									<h3 class="leading-0 my-auto max-w-[70%] overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-sm md:text-lg">
+										{seriesPost.data.title}
+									</h3>
+									<FormattedDate
+										className="text-xs md:text-sm leading-0"
+										date={seriesPost.data.pubDate}
+										locale={seriesPost.data.language}
+									/>
+								</li>
+							</a>
+						))}
+					</ul>
+				</div>
+			)
+		}
+		{
+			allPosts.length > 0 && (
+				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col text-black dark:text-white">
+					<h2 class="text-lg font-bold">
+						{post.data.language == 'en' ? 'New Posts' : '새 글'}
+					</h2>
+					<ul class="flex flex-col gap-y-1">
+						{allPosts.map((p) => (
+							<a href={getPostUrl(p.slug)}>
+								<li class="flex justify-between align-middle">
+									<h3 class="leading-0 my-auto max-w-[70%] overflow-hidden text-ellipsis whitespace-nowrap text-nowrap text-sm md:text-lg">
+										{p.data.title}
+									</h3>
+									<FormattedDate
+										className="text-xs md:text-sm leading-0"
+										date={p.data.pubDate}
+										locale={p.data.language}
+									/>
+								</li>
+							</a>
+						))}
+					</ul>
+				</div>
+			)
+		}
 		<Comments />
 	</main>
 </GeneralLayout>
