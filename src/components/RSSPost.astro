@@ -18,13 +18,7 @@ const { href, title, date } = Astro.props
 	>
 	<a
 		href={href}
-		class="underline"
-		style="
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      max-width: 65%;
-    "
+		class="max-w-[65%] overflow-hidden text-ellipsis whitespace-nowrap underline"
 	>
 		{title}
 	</a>
