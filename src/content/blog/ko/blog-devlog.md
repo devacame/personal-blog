@@ -5,7 +5,7 @@ description: Astro Framework와 Tailwind 스타일을 사용한 이 블로그 �
 pubDate: May 31, 2024
 updatedDate: June 3, 2024
 language: ko
-tags: ['WebDev', 'Project', 'Devlog', 'Astro', 'Tailwind']
+tags: ['웹개발', '프로젝트', 'Devlog', 'Astro', '아스트로', 'Tailwind', '블로그']
 ---
 
 ## Table of Contents
@@ -255,7 +255,7 @@ ViewTransition과는 다르게 이건 무조건 필요한 부분이기 때문에
 
 그러면 저게 왜 필요한가 싶으실텐데, i18n 관련 기능 중에 `getRelativeUrl`이라고 어떤 페이지의 다른 언어 버전 url을 반환하는 함수가 있는데 저는 워크플로우 상 저걸 쓰지 않고 직접 하나하나 설정을 하는게 더 편해서 그랬지만 저 함수를 써서 개발하시는 분들은 조금 골치아파지실 수 있습니다.
 
-***06/03/2024 업데이트***
+**_06/03/2024 업데이트_**
 
 한글로된 시리즈/태그 이름이 오픈그래프 이미지를 생성할 시에 한글이 URL 인코딩되어 getStaticPath에 제대로 등록되지 않아 빌드가 되지 않는 문제가 생겼습니다.
 
