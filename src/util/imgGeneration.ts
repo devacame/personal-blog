@@ -1,14 +1,15 @@
 import sharp from 'sharp'
 import { readFile } from 'node:fs/promises'
 import satori, { type SatoriOptions } from 'satori'
-import { Template } from '@utils/ogTemplate'
+import { Template } from '@utils/imgTemplate'
 import { SITE_TITLE } from '@consts'
 
 // derived from https://jafaraziz.com/blog/generate-open-graph-images-with-astro-and-satori/
-const generateOgImage = async (
+const generateImage = async (
 	text: string = SITE_TITLE,
 	date: Date = new Date(),
 	series: string = '',
+	type: string,
 ): Promise<Buffer> => {
 	const options: SatoriOptions = {
 		width: 1200,
@@ -18,7 +19,7 @@ const generateOgImage = async (
 			{
 				name: 'SpoqaHanSansNeo',
 				data: await readFile(
-					'./src/util/ogFonts/SpoqaHanSansNeo-Regular.ttf',
+					'./src/util/imgFonts/SpoqaHanSansNeo-Regular.ttf',
 				),
 				weight: 400,
 				style: 'normal',
@@ -26,7 +27,7 @@ const generateOgImage = async (
 			{
 				name: 'SpoqaHanSansNeo',
 				data: await readFile(
-					'./src/util/ogFonts/SpoqaHanSansNeo-Bold.ttf',
+					'./src/util/imgFonts/SpoqaHanSansNeo-Bold.ttf',
 				),
 				weight: 700,
 				style: 'normal',
@@ -43,9 +44,12 @@ const generateOgImage = async (
 		options,
 	)
 
-	const buffer = await sharp(Buffer.from(svg)).toBuffer()
+	let buffer = await sharp(Buffer.from(svg)).toBuffer()
+	if (type == 'head') {
+		buffer = await sharp(Buffer.from(svg)).webp().toBuffer()
+	}
 
 	return buffer
 }
 
-export default generateOgImage
+export default generateImage

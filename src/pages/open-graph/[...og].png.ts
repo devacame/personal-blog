@@ -1,6 +1,6 @@
 import { SITE_TITLE } from '@consts'
-import generateOgImage from '@utils/openGraph'
-import type { OgData } from '@utils/ogTemplate'
+import generateImage from '@utils/imgGeneration'
+import type { imgData } from '@utils/imgTemplate.tsx'
 import { getPostUrl } from '@utils/postslug'
 import urlencode from '@utils/urlencode'
 import type { APIRoute } from 'astro'
@@ -140,11 +140,12 @@ export async function getStaticPaths() {
 	]
 }
 
-export const GET: APIRoute<OgData> = async ({ props }) => {
-	const response = await generateOgImage(
+export const GET: APIRoute<imgData> = async ({ props }) => {
+	const response = await generateImage(
 		props.title,
 		props.date,
 		props.series,
+		'og',
 	)
 	return new Response(response, {
 		status: 200,

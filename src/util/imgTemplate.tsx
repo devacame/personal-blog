@@ -1,14 +1,14 @@
 import { SITE_TITLE } from '@consts'
 import React from 'react'
 
-export interface OgData {
+export interface imgData {
 	title: string
 	date: Date
 	series: string
 }
 
 // derived from github.com/satnaing/astro-paper
-export function Template(props: OgData) {
+export function Template(props: imgData) {
 	return (
 		<div
 			style={{
