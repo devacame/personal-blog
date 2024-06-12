@@ -1,10 +1,10 @@
 ---
 isDraft: false
 title: '일반인을 위한 VPN'
-description: '온갖 서비스와 광고가 강조하는 보안과 개인정보보호를 일반인의 관점에서 돌아보자'
+description: '온갖 서비스와 광고가 강조하는 보안과 개인정보보호를 일반인의 관점에서 돌아보자 - VPN편'
 pubDate: 'June 11, 2024'
 language: 'ko'
-tags: ['보안', '프라이버시', '개인정보보호', '대중']
+tags: ['보안', '프라이버시', '개인정보보호', '대중', 'VPN']
 series: '일반인을 위한 보안과 프라이버시'
 seriesNum: 1
 ---
@@ -59,7 +59,7 @@ VPN을 고를 때 주의할 점은 서비스가 믿을 만한지를 잘 판단�
 
 특히 VPN 서비스들이 서로 합병하거나 광고가 주 수익원인 기업 산하로 들어가면서 이런 문제가 더 심화되고 있기 때문에 믿을 만한 VPN을 찾기위한 질문글들도 자주 볼 수 있습니다.
 
-저는 [PrivacyGuides](https://www.privacyguides.org/en/vpn/)에서 추천하는 [Mullvad](https://mullvad.net), [Proton](https://proton.me), [IVPN](https://ivpn.net)(일반 링크들로 제가 얻는 것은 없습니다)이 다른 자료들을 참고했을 때 가장 신뢰할 수 있다고 생각합니다만 자세한 정보는 직접 검색하시는 것을 추천드립니다.
+저는 [PrivacyGuides](https://www.privacyguides.org/en/vpn/)에서 추천하는 [Mullvad](https://mullvad.net), [Proton](https://proton.me), [IVPN](https://ivpn.net)(제휴 링크X)이 다른 자료들을 참고했을 때 가장 신뢰할 수 있다고 생각합니다만 자세한 정보는 직접 검색하시는 것을 추천드립니다.
 
 또 하나 주의할 점은 가장 저렴한 것으로 잘 들어보지도 못한 VPN을 막 구독하시면 안되는게, 악소문이 나거나 해서 서비스를 종료하고 다른 이름으로 새 서비스를 오픈하는 경우나 적자가 나는 경우가 종종 있었기에 규모가 있는 서비스를 선택하셔야 갑자기 날벼락 맞는 일이 없습니다. (앞서 언급한 서비스들은 오랫동안 안정적으로 유지되었기에 신뢰성이 높다고 판단된 것이기도 합니다.) 만약 프라이버시가 주요 목적이 아니시라면 보통 NordVPN이나 SurfShark, PrivateInternetAccess가 상시 할인으로 저렴하며 신뢰 3총사 중에서는 Proton이 2년 플랜 사용시 가장 저렴합니다.
 
