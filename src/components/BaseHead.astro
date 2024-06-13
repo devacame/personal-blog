@@ -8,7 +8,7 @@ interface Props {
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const ogImageURL = new URL(
-	`/open-graph/${Astro.url.pathname.slice(1, -1)}.png`,
+	`/open-graph/${Astro.url.pathname.slice(1, -1)}.jpg`,
 	Astro.site,
 )
 

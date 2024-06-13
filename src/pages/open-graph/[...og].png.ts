@@ -42,7 +42,7 @@ export async function getStaticPaths() {
 			blog.reduce(
 				(cur, post) =>
 					cur.concat(
-						post.data.tags.map((tag) => {
+						post.data.tags.map((tag: string) => {
 							return {
 								tag: tag,
 								lang: post.data.language,
@@ -150,7 +150,7 @@ export const GET: APIRoute<imgData> = async ({ props }) => {
 	return new Response(response, {
 		status: 200,
 		headers: {
-			'Content-Type': 'image/png',
+			'Content-Type': 'image/jpeg',
 		},
 	})
 }

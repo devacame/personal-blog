@@ -44,12 +44,12 @@ const generateImage = async (
 		options,
 	)
 
-	let buffer = await sharp(Buffer.from(svg)).toBuffer()
+	let buffer = sharp(Buffer.from(svg))
 	if (type == 'head') {
-		buffer = await sharp(Buffer.from(svg)).webp().toBuffer()
+		return await buffer.webp({ quality: 80 }).toBuffer()
+	} else {
+		return await buffer.resize(800).jpeg({ quality: 80 }).toBuffer()
 	}
-
-	return buffer
 }
 
 export default generateImage
