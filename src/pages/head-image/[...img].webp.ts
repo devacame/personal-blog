@@ -1,8 +1,6 @@
-import { SITE_TITLE } from '@consts'
 import generateImage from '@utils/imgGeneration'
 import type { imgData } from '@utils/imgTemplate.tsx'
 import { getPostUrl } from '@utils/postslug'
-import urlencode from '@utils/urlencode'
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 
