@@ -7,6 +7,7 @@ import SeriesTag from '@components/SeriesTag.astro'
 import Tag from '@components/Tag.astro'
 import Comments from '@components/Comments.astro'
 import { getPostUrl, slugify } from '@utils/postslug'
+import urlencode from '@utils/urlencode'
 
 export async function getStaticPaths() {
 	const posts = (await getCollection('blog'))
@@ -58,8 +59,7 @@ const newPosts = allPosts.slice(0, 5)
 					width={1020}
 					height={510}
 					src={`/head-image/${getPostUrl(post.slug).slice(1, -1)}.webp`}
-					alt="Head image of "
-					+title
+					alt={'Head image of ' + post.data.title}
 				/>
 			</div>
 			<div class="leading-1 mb-4 py-4 text-center">
@@ -104,11 +104,16 @@ const newPosts = allPosts.slice(0, 5)
 		</article>
 		{
 			seriesPosts.length > 0 && (
-				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col border-2 border-slate-500 text-black dark:border-slate-200 dark:text-white">
-					<h2 class="text-lg font-bold">
-						{post.data.language == 'en'
-							? `Others in ${post.data.series}`
-							: `${post.data.series}의 다른 글`}
+				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col rounded-md border-2 border-slate-500 text-black dark:border-slate-200 dark:text-white">
+					<h2 class="m-1 text-lg font-bold">
+						{post.data.language == 'en' ? 'Others in ' : ''}
+						<a
+							class="underline decoration-cyan-400 underline-offset-2"
+							href={`/${Astro.currentLocale}/series/${urlencode(post.data.series)}`}
+						>
+							{post.data.series!}
+						</a>
+						{post.data.language == 'ko' ? '의 다른 글' : ''}
 					</h2>
 					<ul class="flex flex-col gap-y-1">
 						{seriesPosts.map((seriesPost) => (
@@ -131,8 +136,8 @@ const newPosts = allPosts.slice(0, 5)
 		}
 		{
 			newPosts.length > 0 && (
-				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col border-2 border-slate-500 text-black dark:border-slate-200 dark:text-white">
-					<h2 class="text-lg font-bold">
+				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col rounded-md border-2 border-slate-500 text-black dark:border-slate-200 dark:text-white">
+					<h2 class="m-1 text-lg font-bold">
 						{post.data.language == 'en' ? 'New Posts' : '새 글'}
 					</h2>
 					<ul class="flex flex-col gap-y-1">
