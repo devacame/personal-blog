@@ -115,14 +115,14 @@ const newPosts = allPosts.slice(0, 5)
 			seriesPosts.length > 0 && (
 				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col rounded-md border-2 border-slate-500 text-black dark:border-slate-200 dark:text-white">
 					<h2 class="m-1 text-lg font-bold">
-						{post.data.language == 'en' ? 'Others in ' : ''}
+						{post.data.language == 'en' ? 'Posts in ' : ''}
 						<a
 							class="underline decoration-cyan-400 underline-offset-2"
 							href={`/${Astro.currentLocale}/series/${urlencode(post.data.series)}`}
 						>
 							{post.data.series!}
 						</a>
-						{post.data.language == 'ko' ? '의 다른 글' : ''}
+						{post.data.language == 'ko' ? '의 글들' : ''}
 					</h2>
 					<ul class="flex flex-col gap-y-1">
 						{seriesPosts.map((seriesPost) => (
