@@ -30,7 +30,7 @@ const allPosts = (await getCollection('blog'))
 		(tpost) =>
 			!tpost.data.isDraft && tpost.data.language == Astro.currentLocale,
 	)
-	.sort((a, b) => b.data.seriesNum! - a.data.seriesNum!)
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
 let seriesPosts: Props[] = []
 if (post.data.series != undefined) {
 	seriesPosts = allPosts
