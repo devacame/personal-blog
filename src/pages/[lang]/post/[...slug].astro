@@ -102,6 +102,15 @@ const newPosts = allPosts.slice(0, 5)
 				}
 			</div>
 		</article>
+		<script>
+			document.querySelectorAll('article a').forEach((value: Element) => {
+				const a = value as HTMLAnchorElement
+				if (!a.href.startsWith(location.origin)) {
+					a.target = '_blank'
+					a.rel = 'noopener noreferrer'
+				}
+			})
+		</script>
 		{
 			seriesPosts.length > 0 && (
 				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col rounded-md border-2 border-slate-500 text-black dark:border-slate-200 dark:text-white">
