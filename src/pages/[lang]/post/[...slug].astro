@@ -45,9 +45,6 @@ const newPosts = allPosts.slice(0, 5)
 	description={post.data.description}
 	otherLang={post.data.finishedLanguage}
 >
-	<script>
-		document.getElementById('table-of-contents')?.remove()
-	</script>
 	<main data-pagefind-body>
 		<article
 			class="prose prose-cyan mx-auto w-full dark:prose-invert prose-img:mx-auto"
@@ -102,15 +99,6 @@ const newPosts = allPosts.slice(0, 5)
 				}
 			</div>
 		</article>
-		<script>
-			document.querySelectorAll('article a').forEach((value: Element) => {
-				const a = value as HTMLAnchorElement
-				if (!a.href.startsWith(location.origin)) {
-					a.target = '_blank'
-					a.rel = 'noopener noreferrer'
-				}
-			})
-		</script>
 		{
 			seriesPosts.length > 0 && (
 				<div class="mx-auto mt-4 flex max-w-[65ch] flex-col rounded-md border-2 border-slate-500 text-black dark:border-slate-200 dark:text-white">
@@ -169,5 +157,27 @@ const newPosts = allPosts.slice(0, 5)
 			)
 		}
 		<Comments />
+		<script>
+			document.addEventListener('astro:after-swap', () => {
+				document.getElementById('table-of-contents')?.remove()
+				document
+					.querySelectorAll('article a')
+					.forEach((value: Element) => {
+						const a = value as HTMLAnchorElement
+						if (!a.href.startsWith(location.origin)) {
+							a.target = '_blank'
+							a.rel = 'noopener noreferrer'
+						}
+					})
+			})
+			document.getElementById('table-of-contents')?.remove()
+			document.querySelectorAll('article a').forEach((value: Element) => {
+				const a = value as HTMLAnchorElement
+				if (!a.href.startsWith(location.origin)) {
+					a.target = '_blank'
+					a.rel = 'noopener noreferrer'
+				}
+			})
+		</script>
 	</main>
 </GeneralLayout>
