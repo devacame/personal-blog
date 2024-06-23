@@ -1,22 +1,42 @@
 import generateImage from '@utils/imgGeneration'
 import type { imgData } from '@utils/imgTemplate.tsx'
 import { getPostUrl } from '@utils/postslug'
+import urlencode from '@utils/urlencode'
 import type { APIRoute } from 'astro'
 import { getCollection } from 'astro:content'
 
 export async function getStaticPaths() {
-	return (await getCollection('blog'))
-		.filter((post) => !post.data.isDraft)
+	const blog = (await getCollection('blog')).filter(
+		(post) => !post.data.isDraft,
+	)
+
+	const posts = blog.map((post) => {
+		return {
+			params: { img: getPostUrl(post.slug).slice(1, -1) },
+			props: {
+				title: post.data.title,
+				date: post.data.updatedDate || post.data.pubDate,
+				series: post.data.series,
+			},
+		}
+	})
+
+	const series = blog
+		.filter(
+			(post) => post.data.series != undefined && post.data.seriesNum == 1,
+		)
 		.map((post) => {
 			return {
-				params: { img: getPostUrl(post.slug).slice(1, -1) },
+				params: {
+					img: `${post.data.language}/series/${urlencode(post.data.series)}`,
+				},
 				props: {
-					title: post.data.title,
-					date: post.data.updatedDate || post.data.pubDate,
-					series: post.data.series,
+					title: `${post.data.series} ${post.data.language == 'en' ? 'Series' : '시리즈'}`,
 				},
 			}
 		})
+
+	return [...posts, ...series]
 }
 
 export const GET: APIRoute<imgData> = async ({ props }) => {
