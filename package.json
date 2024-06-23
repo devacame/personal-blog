@@ -13,11 +13,11 @@
 	},
 	"dependencies": {
 		"@astrojs/check": "^0.7.0",
-		"@astrojs/mdx": "^3.0.1",
+		"@astrojs/mdx": "^3.1.1",
 		"@astrojs/rss": "^4.0.6",
-		"@astrojs/sitemap": "^3.1.5",
+		"@astrojs/sitemap": "^3.1.6",
 		"@astrojs/tailwind": "^5.1.0",
-		"astro": "^4.9.2",
+		"astro": "^4.11.0",
 		"astro-navbar": "^2.3.2",
 		"astro-pagefind": "^1.5.0",
 		"hangul-util": "^0.1.4",
@@ -31,7 +31,7 @@
 		"typescript": "^5.4.5"
 	},
 	"devDependencies": {
-		"@astrojs/react": "^3.3.4",
+		"@astrojs/react": "^3.6.0",
 		"@tailwindcss/typography": "^0.5.12",
 		"@types/react": "^18.3.2",
 		"@types/react-dom": "^18",
