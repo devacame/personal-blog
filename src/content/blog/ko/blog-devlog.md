@@ -158,14 +158,52 @@ html.dark {
 
 버튼들은 이벤트 리스너를 통해 작동하는데, 테스트 중에 리스너의 함수가 가끔씩 작동을 안하는 것부터 어떤 document 함수들은 아예 실행되지 않아서 디버깅하는데 시간을 좀 잡아먹었습니다. (빌드 서버는 문제가 없더라고요)
 
-그리고 가장 큰 문제는 바로 **ViewTransition**과의 연동성이 최악이라는 점이었습니다.
-ViewTransition은 사이트 내에서 페이지 이동시 공통 요소들을 다시 렌더하지 않고 이동시키는 애니메이션을 통해 사용자 경험을 증가시키는 Astro 기능입니다.
+~~그리고 가장 큰 문제는 바로 **ViewTransition**과의 연동성이 최악이라는 점이었습니다.~~
 
-그런데 사이트 조작 버튼들은 전부 페이지에 관계없이 존재하다보니 컴포넌트 안의 스크립트 태그들이 여러번 작동하는건지 뭔가 충돌이 일어나는지 페이지 이동 시에 리스너들이 하나같이 다 작동을 하지 않았습니다.(아직도 미스터리입니다)
+**_06/23/2024 업데이트_**
 
-물론 Astro 문서에는 ViewTransition 사용시 스크립트를 어떻게 사용해야 하는지가 기술되어 있으며 스택오버플로우 등에도 여러 답변이 있었습니다만 하나도 안 통하길래 결국 다시 원복을 시켰습니다. (근데 ViewTransition 쓰니까 깔끔하긴 해서 버그인지 뭔지는 몰라도 개선되었으면 좋겠네요...)
+오늘 다시 한번 [ViewTransition](https://docs.astro.build/en/guides/view-transitions/)을 사용해보니 잘 작동을 하네요??(내가 저번에 쓴 이틀은..?)
 
--   추가로 서술하자면 Astro는 기본적으로 스크립트 태그를 정적 생성 시에 실행하고 빌드 후 페이지에는 스크립트 내용이 들어가지 않습니다. 아마 이 과정에서 내부적으로 무슨 문제가 발생한 것으로 추측 중입니다.
+사용 방법은 문서에 나와있는 대로 작성을 해서 다음과 같이 적용되었습니다.
+
+```html
+<!-- GeneralLayout.astro -->
+<head>
+	<BaseHead title={title} description={description} />
+	<ViewTransitions /> <!--필수 컴포넌트-->
+</head>
+```
+```js
+// 예시용 ThemeToggleBtn.astro
+document.addEventListener('astro:page-load', () => {
+    initTheme()
+    document
+        .getElementById('themeToggle')
+        ?.addEventListener('click', (e) => {
+            e.stopImmediatePropagation()
+            const element = document.documentElement
+            element.classList.toggle('dark')
+            element.classList.toggle('light')
+            const isDark = element.classList.contains('dark')
+            localStorage.setItem('theme', isDark
+                ? 'dark'
+                : 'light')
+            document
+                .querySelector('#chirpy-comment')
+                ?.setAttribute(
+                    'data-chirpy-theme',
+                    isDark ? 'dark' : 'light',
+                )
+        })
+})
+document.addEventListener('astro:after-swap', initTheme)
+initTheme()
+```
+이번에 새롭게 알게 된 점은 `addEventListener`가 여러번 추가되면 같은 이벤트더라도 이전의 리스너를 고쳐쓰는 것이 아닌 실제로 여러개를 추가한다는 것이었습니다.
+
+이점으로 인하여 테마 전환시 원래 `initTheme`함수 안에 구현되어 있던 이벤트 리스너를 `astro:page-load`안에 넣음으로서 한번만 리스너를 추가해 여러번 토글이 되는(결과적으로는 두번 토글해 원상복구가 되는) 문제를 해결하였습니다. 아마 지난번에도 이게 문제였을 것 같습니다.
+
+추가적으로 `e.stopImmediatePropagation`이라는 메소드가 있는데 이는 같은 요소의 이벤트 리스너가 곧바로 실행하는 것을 막는 `Event`의 메소드라 넣어두었습니다. (이 메소드는 위/아래 이동 버튼에도 사용되었습니다.)
 
 #### 댓글
 
