@@ -67,7 +67,6 @@
 				element.classList.toggle('dark')
 				element.classList.toggle('light')
 				const isDark = element.classList.contains('dark')
-				console.log(isDark)
 				localStorage.setItem('theme', isDark ? 'dark' : 'light')
 				document
 					.querySelector('#chirpy-comment')
