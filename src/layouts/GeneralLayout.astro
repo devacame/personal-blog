@@ -25,7 +25,7 @@ const { title, description, otherLang = '' } = Astro.props
 			<Navbar />
 			<slot />
 			<Footer transition:persist />
-			<SiteManipulationBtn otherLang={otherLang} transition:persist />
+			<SiteManipulationBtn otherLang={otherLang} />
 			<div id="bottom" class="invisible"></div>
 		</div>
 	</body>
