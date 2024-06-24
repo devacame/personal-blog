@@ -76,10 +76,10 @@ export function Template(props: imgData) {
 					)}
 					<h1
 						style={{
-							fontSize: 90,
+							fontSize: 80,
 							fontWeight: 'bold',
 							maxHeight: '84%',
-							overflow: 'hidden',
+							margin: 0,
 						}}
 					>
 						{props.title}
@@ -91,11 +91,14 @@ export function Template(props: imgData) {
 							alignItems: 'center',
 							width: '100%',
 							marginBottom: '8px',
-							fontSize: 40,
 						}}
 					>
 						<span
-							style={{ overflow: 'hidden', fontWeight: 'bold' }}
+							style={{
+								overflow: 'hidden',
+								fontWeight: 'bold',
+								fontSize: 40,
+							 }}
 						>
 							{props.date.toLocaleDateString()}
 						</span>
@@ -104,7 +107,7 @@ export function Template(props: imgData) {
 							style={{
 								overflow: 'hidden',
 								fontWeight: 'bold',
-								fontSize: 60,
+								fontSize: 55,
 							}}
 						>
 							{SITE_TITLE}
