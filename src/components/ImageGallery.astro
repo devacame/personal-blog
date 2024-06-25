@@ -1,0 +1,105 @@
+---
+import { Image } from 'astro:assets'
+type ImagesType = { src: string; alt: string }[]
+const { images } = Astro.props as { images: ImagesType }
+const allImages = import.meta.glob<{ default: ImageMetadata }>(
+	'/src/content/blog/assets/**/*.{jpeg,jpg,png,gif}',
+)
+
+function hashImages(images: ImagesType) {
+	const str = images.map((img) => img.src + img.alt).join('')
+	return hashString(str)
+}
+
+function hashString(str: string) {
+	let hash = 0
+	for (let i = 0; i < str.length; i++) {
+		const char = str.charCodeAt(i)
+		hash = (hash << 5) - hash + char
+		hash |= 0
+	}
+	return hash.toString(36)
+}
+
+const id = hashImages(images)
+const generateScrollScript = (id: string) => `
+  document.addEventListener('DOMContentLoaded', () => {
+    const scrollLeftButton = document.querySelector('#${id}-left');
+    const scrollRightButton = document.querySelector('#${id}-right');
+    const galleryContainer = document.querySelector('#${id}');
+
+    const scrollAmount = 200; // Customize based on your needs
+
+    scrollLeftButton.addEventListener('click', () => {
+      galleryContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    scrollRightButton.addEventListener('click', () => {
+      galleryContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  });
+`
+---
+
+<div class="relative">
+	<div
+		id={id}
+		class="gallery-container flex snap-x snap-mandatory gap-x-2 overflow-auto whitespace-nowrap rounded-md bg-slate-100 px-2 dark:bg-slate-900"
+	>
+		{
+			images.map(({ src, alt }) => {
+				const img = allImages[`/src/content/blog/assets/${src}`]
+				if (!img) {
+					console.error(`Image not found: ${src}`)
+					return null
+				}
+				return (
+					<Image
+						src={img()}
+						alt={alt}
+						class="my-1 max-h-[40vh] min-w-full snap-center object-contain"
+					/>
+				)
+			})
+		}
+	</div>
+	<button
+		id=`${id}-left`
+		class="absolute left-2 top-1/2 -translate-y-1/2 transform text-4xl text-white mix-blend-exclusion"
+		>‹</button
+	>
+	<button
+		id=`${id}-right`
+		class="absolute right-2 top-1/2 -translate-y-1/2 transform text-4xl text-white mix-blend-exclusion"
+		>›</button
+	>
+</div>
+
+<script define:vars={{ id }}>
+	function initScroll(id) {
+		function scrollGallery(direction) {
+			const container = document.getElementById(id)
+			const scrollAmount = 400 // Arbitary value, should be adjusted based on image width
+			const currentScroll = container.scrollLeft
+			container.scrollTo({
+				top: 0,
+				left: currentScroll + scrollAmount * direction,
+				behavior: 'smooth',
+			})
+		}
+
+		const scrollLeft = document.getElementById(`${id}-left`)
+		const scrollRight = document.getElementById(`${id}-right`)
+
+		scrollLeft.addEventListener('click', function (e) {
+			e.stopPropagation()
+			scrollGallery(-1)
+		})
+
+		scrollRight.addEventListener('click', function (e) {
+			e.stopPropagation()
+			scrollGallery(1)
+		})
+	}
+	document.addEventListener('DOMContentLoaded', () => initScroll(id))
+</script>
