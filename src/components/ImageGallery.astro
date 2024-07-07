@@ -1,9 +1,12 @@
 ---
 import { Image } from 'astro:assets'
 type ImagesType = { src: string; alt: string }[]
-const { images } = Astro.props as { images: ImagesType }
+const { folder = '', images } = Astro.props as {
+	folder: string
+	images: ImagesType
+}
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
-	'/src/content/blog/assets/**/*.{jpeg,jpg,png,gif}',
+	'/src/content/blog/assets/**/*.{jpeg,jpg,png,gif,webp}',
 )
 
 function hashImages(images: ImagesType) {
@@ -22,23 +25,6 @@ function hashString(str: string) {
 }
 
 const id = hashImages(images)
-const generateScrollScript = (id: string) => `
-  document.addEventListener('DOMContentLoaded', () => {
-    const scrollLeftButton = document.querySelector('#${id}-left');
-    const scrollRightButton = document.querySelector('#${id}-right');
-    const galleryContainer = document.querySelector('#${id}');
-
-    const scrollAmount = 200; // Customize based on your needs
-
-    scrollLeftButton.addEventListener('click', () => {
-      galleryContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-
-    scrollRightButton.addEventListener('click', () => {
-      galleryContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
-  });
-`
 ---
 
 <div class="relative">
@@ -48,9 +34,14 @@ const generateScrollScript = (id: string) => `
 	>
 		{
 			images.map(({ src, alt }) => {
-				const img = allImages[`/src/content/blog/assets/${src}`]
+				const img =
+					allImages[
+						`/src/content/blog/assets/${folder + (folder.endsWith('/') ? '' : '/') + src}`
+					]
 				if (!img) {
-					console.error(`Image not found: ${src}`)
+					console.error(
+						`Image not found: ${folder + (folder.endsWith('/') ? '' : '/') + src}`,
+					)
 					return null
 				}
 				return (
